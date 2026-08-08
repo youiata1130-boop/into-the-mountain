@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="資源を集め、道具や建物を整えて勝利を目指す対戦ボードゲームです。">
+  <title>Into the Mountain - Web Board Game</title>
+  <link rel="stylesheet" href="src/ui/styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Web Board Game</p>
+        <h1>Into the Mountain</h1>
+        <p class="lead">木・石・鉄を集めて道具や建物を整え、売却・雇用・攻撃で勝利を目指す対戦ボードゲームです。</p>
+      </div>
+      <div class="hero-actions">
+        <div class="mode-switch" aria-label="play-mode">
+          <button id="mode-local-button" class="secondary-button" type="button">ローカル対戦</button>
+          <button id="mode-cpu-button" class="secondary-button" type="button">CPU対戦</button>
+        </div>
+        <button id="start-button" class="action-button" type="button">ゲーム開始</button>
+        <button id="reset-button" class="secondary-button" type="button">初期状態に戻す</button>
+      </div>
+    </header>
+
+    <section class="status-panel">
+      <div class="status-top">
+        <p class="status-chip">ターン: <span id="turn-number">0</span></p>
+        <p class="status-chip">行動ポイント <span id="action-points">0</span> / 2</p>
+        <p class="status-chip">対戦モード <span id="play-mode-status">ローカル対戦</span></p>
+      </div>
+      <p id="status-text" class="status-text"></p>
+    </section>
+
+    <section class="status-panel match-panel">
+      <div class="match-row">
+        <button id="create-match-button" class="action-button" type="button">部屋を作成</button>
+        <input id="room-code-input" class="match-input" type="text" maxlength="8" placeholder="部屋コード">
+        <button id="join-match-button" class="secondary-button" type="button">参加</button>
+      </div>
+      <p class="status-chip">部屋コード <span id="room-code-display">未作成</span></p>
+      <p id="room-status" class="status-text">部屋を作成し、同じブラウザの別ウィンドウから同じコードで参加してください。</p>
+    </section>
+
+    <section class="battlefield" aria-label="game-board">
+      <section class="player-row">
+        <aside class="country-panel">
+          <div class="country-title-block">
+            <h2 id="opponent-country-name" class="country-name">始まりの国</h2>
+          </div>
+          <div class="country-stat country-stat-health">
+            <span class="country-stat-label">体力</span>
+            <strong id="opponent-health" class="country-stat-value">10</strong>
+          </div>
+          <div class="country-stat country-stat-compact">
+            <span class="country-stat-label">攻撃</span>
+            <strong id="opponent-attack" class="country-stat-value country-stat-value-small">0</strong>
+          </div>
+          <div class="country-stat country-stat-compact">
+            <span class="country-stat-label">防御</span>
+            <strong id="opponent-defense" class="country-stat-value country-stat-value-small">2</strong>
+          </div>
+          <section class="equipment-panel country-panel-personnel">
+            <div class="zone-title-row zone-title-row-compact">
+              <h3>人材</h3>
+            </div>
+            <div id="opponent-personnel" class="equipment-list"></div>
+          </section>
+          <section class="equipment-panel country-panel-equipment">
+            <div class="zone-title-row zone-title-row-compact">
+              <h3>装備</h3>
+            </div>
+            <div id="opponent-equipment" class="equipment-list"></div>
+          </section>
+          <section class="equipment-panel country-panel-buildings">
+            <div class="zone-title-row zone-title-row-compact">
+              <h3>建物</h3>
+            </div>
+            <div id="opponent-buildings" class="equipment-list"></div>
+          </section>
+        </aside>
+
+        <article class="player-area board-opponent">
+          <div class="area-header">
+            <p id="opponent-player-label" class="area-label">待機プレイヤー</p>
+            <h2 id="opponent-player-title">相手プレイヤーの手札</h2>
+          </div>
+          <section class="zone">
+            <div class="zone-title-row">
+              <h3>手札</h3>
+              <span id="opponent-hand-count" class="zone-count"></span>
+            </div>
+            <div id="opponent-hand" class="card-list card-list-hand"></div>
+          </section>
+        </article>
+      </section>
+
+      <section class="board board-center">
+        <section class="zone board-deck">
+          <div class="zone-title-row">
+            <h3>山札</h3>
+            <span id="shared-deck-count" class="zone-count"></span>
+          </div>
+          <div id="shared-deck" class="stack-view"></div>
+        </section>
+
+        <section class="zone board-field">
+          <div class="zone-title-row">
+            <h3>場札</h3>
+            <span id="shared-field-count" class="zone-count"></span>
+          </div>
+          <div id="shared-field" class="card-list"></div>
+        </section>
+
+        <section class="zone board-discard">
+          <div class="zone-title-row">
+            <h3>捨て札</h3>
+            <span id="shared-discard-count" class="zone-count"></span>
+          </div>
+          <div id="shared-discard" class="stack-view"></div>
+        </section>
+      </section>
+
+      <section class="player-row player-row-self">
+        <aside class="country-panel">
+          <div class="country-title-block">
+            <h2 id="self-country-name" class="country-name">始まりの国</h2>
+          </div>
+          <div class="country-stat country-stat-health">
+            <span class="country-stat-label">体力</span>
+            <strong id="self-health" class="country-stat-value">10</strong>
+          </div>
+          <div class="country-stat country-stat-compact">
+            <span class="country-stat-label">攻撃</span>
+            <strong id="self-attack" class="country-stat-value country-stat-value-small">0</strong>
+          </div>
+          <div class="country-stat country-stat-compact">
+            <span class="country-stat-label">防御</span>
+            <strong id="self-defense" class="country-stat-value country-stat-value-small">2</strong>
+          </div>
+          <section class="equipment-panel country-panel-personnel">
+            <div class="zone-title-row zone-title-row-compact">
+              <h3>人材</h3>
+            </div>
+            <div id="self-personnel" class="equipment-list"></div>
+          </section>
+          <section class="equipment-panel country-panel-equipment">
+            <div class="zone-title-row zone-title-row-compact">
+              <h3>装備</h3>
+            </div>
+            <div id="self-equipment" class="equipment-list"></div>
+          </section>
+          <section class="equipment-panel country-panel-buildings">
+            <div class="zone-title-row zone-title-row-compact">
+              <h3>建物</h3>
+            </div>
+            <div id="self-buildings" class="equipment-list"></div>
+          </section>
+        </aside>
+
+        <article class="player-area board-self">
+          <div class="area-header">
+            <p id="self-player-label" class="area-label">手番プレイヤー</p>
+            <div class="player-hand-toolbar">
+              <div class="player-hand-header">
+                <h2 id="self-player-title" class="player-hand-title">手番プレイヤー</h2>
+                <p class="wallet-chip"><span id="wallet-label">所持金</span> <strong id="self-gold">0</strong> G</p>
+              </div>
+              <section class="turn-command-row">
+                <div class="command-group">
+                  <button id="build-toggle-button" class="action-button build-toggle-button" type="button">建設</button>
+                  <div id="build-command-panel" class="command-panel command-panel-build" hidden>
+                    <button id="build-wood-fence-button" class="action-button" type="button">木の柵を建てる</button>
+                    <button id="build-castle-wall-button" class="action-button" type="button">城壁を建てる</button>
+                    <button id="build-evolution-temple-button" class="action-button" type="button">進化の神殿を建てる</button>
+                    <button id="build-victory-temple-button" class="action-button" type="button">勝利の神殿を建てる</button>
+                  </div>
+                </div>
+                <button id="attack-button" class="action-button" type="button">攻撃</button>
+                <button id="end-turn-button" class="secondary-button" type="button">ターン終了</button>
+              </section>
+            </div>
+          </div>
+          <section class="contextual-action-panel">
+            <div class="contextual-action-header">
+              <p class="command-group-label">選択中の行動</p>
+              <p id="contextual-action-hint" class="contextual-action-hint">手札または場札のカードを選ぶと行動が表示されます</p>
+            </div>
+            <div id="contextual-command-panel" class="command-panel command-panel-contextual">
+              <button id="gather-wood-button" class="secondary-button" type="button">2行動Pで木を獲得</button>
+              <button id="sell-wood-button" class="secondary-button" type="button">木を売却</button>
+              <button id="sell-stone-button" class="secondary-button" type="button">石を売却</button>
+              <button id="sell-iron-button" class="secondary-button" type="button">鉄を売却</button>
+              <button id="craft-axe-button" class="action-button" type="button">木の斧を作る</button>
+              <button id="use-axe-button" class="secondary-button" type="button">木の斧を使う</button>
+              <button id="craft-pickaxe-button" class="action-button" type="button">木のつるはしを作る</button>
+              <button id="use-pickaxe-button" class="secondary-button" type="button">木のつるはしを使う</button>
+              <button id="craft-stone-pickaxe-button" class="action-button" type="button">石のつるはしを作る</button>
+              <button id="use-stone-pickaxe-button" class="secondary-button" type="button">石のつるはしを使う</button>
+              <button id="craft-stone-sword-button" class="action-button" type="button">石の剣を作る</button>
+              <button id="craft-iron-sword-button" class="action-button" type="button">鉄の剣を作る</button>
+              <button id="hire-lumberjack-button" class="action-button" type="button">木こりを雇用 (2G)</button>
+              <button id="hire-swordsman-button" class="action-button" type="button">剣士を雇用 (4G)</button>
+              <button id="hire-sage-button" class="action-button" type="button">賢者を雇用 (6G)</button>
+            </div>
+          </section>
+          <section class="zone">
+            <div class="zone-title-row">
+              <h3>手札</h3>
+              <span id="self-hand-count" class="zone-count"></span>
+            </div>
+            <div id="self-hand" class="card-list card-list-hand"></div>
+          </section>
+        </article>
+      </section>
+    </section>
+
+    <section class="status-panel action-log-panel">
+      <p class="action-log-title">行動ログ</p>
+      <div id="action-log" class="action-log-list"></div>
+    </section>
+  </main>
+
+  <div id="event-overlay" class="event-overlay" hidden>
+    <div class="event-overlay-card" role="alert" aria-live="assertive">
+      <p class="event-overlay-label">イベント発生</p>
+      <h2 id="event-overlay-title" class="event-overlay-title"></h2>
+      <img id="event-overlay-image" class="event-overlay-image" alt="">
+      <p id="event-overlay-message" class="event-overlay-message"></p>
+    </div>
+  </div>
+
+  <div id="action-toast" class="action-toast" hidden aria-live="polite"></div>
+
+  <script src="src/game/state.js"></script>
+  <script src="src/ui/app.js"></script>
+</body>
+</html>

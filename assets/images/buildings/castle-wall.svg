@@ -1,0 +1,82 @@
+<svg width="240" height="180" viewBox="0 0 240 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cw-title cw-desc">
+  <title id="cw-title">断崖の巨大城壁</title>
+  <desc id="cw-desc">琥珀色の烽火が灯る、山を断ち切るようにそびえる巨大な石造城壁</desc>
+  <defs>
+    <linearGradient id="cw-sky" x1="28" y1="2" x2="212" y2="178" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#07111D"/>
+      <stop offset="0.55" stop-color="#17232D"/>
+      <stop offset="1" stop-color="#080D14"/>
+    </linearGradient>
+    <linearGradient id="cw-stone" x1="83" y1="54" x2="153" y2="167" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#56636A"/>
+      <stop offset="0.38" stop-color="#344047"/>
+      <stop offset="0.75" stop-color="#20282F"/>
+      <stop offset="1" stop-color="#111820"/>
+    </linearGradient>
+    <linearGradient id="cw-tower" x1="48" y1="42" x2="94" y2="165" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#718087"/>
+      <stop offset="0.32" stop-color="#3E4A51"/>
+      <stop offset="1" stop-color="#141B22"/>
+    </linearGradient>
+    <linearGradient id="cw-rim" x1="64" y1="58" x2="135" y2="153" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D99B43" stop-opacity="0.86"/>
+      <stop offset="0.42" stop-color="#6A593F" stop-opacity="0.48"/>
+      <stop offset="1" stop-color="#4A8990" stop-opacity="0.12"/>
+    </linearGradient>
+    <linearGradient id="cw-ground" x1="120" y1="126" x2="120" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#202A31"/>
+      <stop offset="1" stop-color="#060A10"/>
+    </linearGradient>
+    <radialGradient id="cw-fire" cx="0" cy="0" r="1" gradientTransform="translate(188 60) rotate(140) scale(58 45)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFBD5C" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#E0832F" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="cw-shadow" x="-25%" y="-25%" width="150%" height="160%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#02060B" flood-opacity="0.9"/>
+    </filter>
+    <filter id="cw-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <filter id="cw-fog" x="-20%" y="-100%" width="140%" height="300%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <clipPath id="cw-frame">
+      <rect width="240" height="180" rx="12"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#cw-frame)">
+    <rect width="240" height="180" fill="url(#cw-sky)"/>
+    <circle cx="190" cy="57" r="60" fill="url(#cw-fire)"/>
+    <path d="M-9 113L33 60L57 82L86 35L120 83L155 46L181 78L207 51L249 106V137H-9V113Z" fill="#101923" stroke="#273743" stroke-width="2"/>
+    <path d="M-5 120L30 85L58 106L91 69L124 108L155 76L185 104L211 81L245 115V141H-5V120Z" fill="#1D2B33"/>
+    <path d="M0 107C40 94 69 113 105 105C141 98 182 113 240 96V127H0V107Z" fill="#77B8B5" fill-opacity="0.13" filter="url(#cw-fog)"/>
+    <path d="M0 133L32 122L67 133L106 117L143 128L179 116L213 127L240 118V180H0V133Z" fill="url(#cw-ground)"/>
+    <g filter="url(#cw-shadow)" stroke="#0A0E13" stroke-width="4" stroke-linejoin="round">
+      <path d="M55 70H185V162H55V70Z" fill="url(#cw-stone)"/>
+      <path d="M50 68V53H67V64H81V50H98V67H110V55H128V70L121 78H58L50 68Z" fill="url(#cw-tower)"/>
+      <path d="M31 159V54H43V40H55V53H67V40H79V54H91V159H31Z" fill="url(#cw-tower)"/>
+      <path d="M149 159V50H162V36H175V50H188V36H201V51H213V159H149Z" fill="url(#cw-tower)"/>
+      <path d="M90 160V70H104V57H117V70H131V57H145V160H90Z" fill="url(#cw-stone)"/>
+    </g>
+    <g fill="none" stroke-linecap="round">
+      <path d="M62 78H88M95 85H119M128 78H145M61 103H89M108 100H139M60 130H88M112 126H142M158 73H181M184 90H208M156 117H180M187 128H210" stroke="#7B898D" stroke-opacity="0.45" stroke-width="2"/>
+      <path d="M34 69H86M93 82H144M154 66H208" stroke="#D8A04E" stroke-opacity="0.48" stroke-width="2"/>
+      <path d="M67 55L67 155M104 74V156M160 54V156" stroke="url(#cw-rim)" stroke-width="3"/>
+    </g>
+    <path d="M103 160V126C103 105 133 105 133 126V160H103Z" fill="#070B11" stroke="#090D12" stroke-width="4"/>
+    <path d="M108 157V128C108 114 128 114 128 128V157" stroke="#C8863B" stroke-opacity="0.3" stroke-width="2"/>
+    <g fill="#78B9B8" fill-opacity="0.58">
+      <rect x="48" y="81" width="8" height="17" rx="4"/><rect x="69" y="81" width="8" height="17" rx="4"/>
+      <rect x="164" y="79" width="9" height="18" rx="4"/><rect x="190" y="79" width="9" height="18" rx="4"/>
+    </g>
+    <g>
+      <circle cx="42" cy="51" r="8" fill="#EF9C3D" fill-opacity="0.32" filter="url(#cw-glow)"/>
+      <path d="M42 55C36 49 42 44 43 38C50 45 50 51 42 55Z" fill="#FFBD55"/>
+      <circle cx="201" cy="47" r="9" fill="#EF9C3D" fill-opacity="0.38" filter="url(#cw-glow)"/>
+      <path d="M201 51C194 45 201 39 202 33C209 41 209 47 201 51Z" fill="#FFC45D"/>
+    </g>
+    <path d="M0 157C42 145 76 164 116 154C161 143 198 159 240 148V180H0V157Z" fill="#070B11"/>
+    <path d="M0 159C49 149 77 165 115 157C164 147 202 160 240 151" stroke="#5EA4A6" stroke-opacity="0.25" stroke-width="2"/>
+  </g>
+  <rect x="1.5" y="1.5" width="237" height="177" rx="10.5" stroke="#344751" stroke-width="3"/>
+</svg>

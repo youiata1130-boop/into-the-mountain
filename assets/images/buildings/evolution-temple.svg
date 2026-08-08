@@ -1,0 +1,87 @@
+<svg width="240" height="180" viewBox="0 0 240 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="et-title et-desc">
+  <title id="et-title">進化の青緑神殿</title>
+  <desc id="et-desc">山霧の中で古代の環と青緑の光が脈動する、神秘的な進化の神殿</desc>
+  <defs>
+    <linearGradient id="et-sky" x1="22" y1="4" x2="218" y2="178" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#06131D"/>
+      <stop offset="0.5" stop-color="#132631"/>
+      <stop offset="1" stop-color="#061017"/>
+    </linearGradient>
+    <linearGradient id="et-stone" x1="77" y1="50" x2="157" y2="159" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#506469"/>
+      <stop offset="0.46" stop-color="#2E4145"/>
+      <stop offset="1" stop-color="#101B21"/>
+    </linearGradient>
+    <linearGradient id="et-pillar" x1="80" y1="63" x2="95" y2="144" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7A9190"/>
+      <stop offset="0.35" stop-color="#3B5555"/>
+      <stop offset="1" stop-color="#17282C"/>
+    </linearGradient>
+    <linearGradient id="et-energy" x1="102" y1="56" x2="137" y2="132" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B5FFF1"/>
+      <stop offset="0.38" stop-color="#35D8C9"/>
+      <stop offset="1" stop-color="#087B86"/>
+    </linearGradient>
+    <linearGradient id="et-rim" x1="69" y1="57" x2="165" y2="132" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DEA24B"/>
+      <stop offset="0.35" stop-color="#8A6B44"/>
+      <stop offset="1" stop-color="#3FD7CC"/>
+    </linearGradient>
+    <radialGradient id="et-aura" cx="0" cy="0" r="1" gradientTransform="translate(121 89) rotate(90) scale(68 76)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#43E0D0" stop-opacity="0.46"/>
+      <stop offset="0.48" stop-color="#159B9E" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#0C7982" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="et-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <filter id="et-shadow" x="-25%" y="-25%" width="150%" height="165%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#02070B" flood-opacity="0.9"/>
+    </filter>
+    <filter id="et-fog" x="-20%" y="-100%" width="140%" height="300%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <clipPath id="et-frame">
+      <rect width="240" height="180" rx="12"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#et-frame)">
+    <rect width="240" height="180" fill="url(#et-sky)"/>
+    <path d="M-10 112L28 70L52 89L88 35L118 73L149 38L178 79L204 57L250 108V137H-10V112Z" fill="#101D26" stroke="#263C46" stroke-width="2"/>
+    <path d="M-8 122L33 88L60 109L91 72L121 107L154 70L185 107L213 84L248 116V142H-8V122Z" fill="#173038"/>
+    <ellipse cx="121" cy="92" rx="81" ry="71" fill="url(#et-aura)"/>
+    <path d="M0 108C41 93 71 116 109 104C151 91 184 113 240 94V127H0V108Z" fill="#67D7CC" fill-opacity="0.14" filter="url(#et-fog)"/>
+    <path d="M0 137L39 124L73 132L107 119L142 131L176 118L209 128L240 120V180H0V137Z" fill="#111E24"/>
+    <g filter="url(#et-shadow)" stroke="#070E13" stroke-width="4" stroke-linejoin="round">
+      <path d="M53 150L62 62L120 27L178 62L187 150H53Z" fill="url(#et-stone)"/>
+      <path d="M59 64L120 28L181 64L170 75H70L59 64Z" fill="#2C4245"/>
+      <path d="M45 146H195L186 164H54L45 146Z" fill="#26383C"/>
+      <path d="M58 134H182L189 148H51L58 134Z" fill="#415658"/>
+      <path d="M69 71H91L87 135H73L69 71Z" fill="url(#et-pillar)"/>
+      <path d="M99 71H116L113 135H102L99 71Z" fill="url(#et-pillar)"/>
+      <path d="M124 71H141L138 135H127L124 71Z" fill="url(#et-pillar)"/>
+      <path d="M149 71H171L167 135H153L149 71Z" fill="url(#et-pillar)"/>
+    </g>
+    <path d="M73 72H168" stroke="url(#et-rim)" stroke-width="3"/>
+    <path d="M60 135H180" stroke="#51E1D2" stroke-opacity="0.5" stroke-width="2"/>
+    <g>
+      <circle cx="120" cy="57" r="18" fill="#23BDB4" fill-opacity="0.28" filter="url(#et-glow)"/>
+      <circle cx="120" cy="57" r="13" fill="#0B1C23" stroke="url(#et-energy)" stroke-width="4"/>
+      <path d="M120 47L124 54L132 57L124 61L120 69L116 61L108 57L116 54L120 47Z" fill="url(#et-energy)"/>
+    </g>
+    <path d="M116 76C99 89 104 112 120 122C137 111 141 89 124 76" fill="#0B1A20" stroke="#15383E" stroke-width="3"/>
+    <path d="M120 82C109 92 112 105 120 113C128 105 131 92 120 82Z" fill="url(#et-energy)"/>
+    <path d="M120 84V113" stroke="#D6FFF6" stroke-opacity="0.7" stroke-width="2"/>
+    <g fill="#49D9CC">
+      <circle cx="80" cy="100" r="2"/><circle cx="108" cy="92" r="2"/><circle cx="132" cy="96" r="2"/><circle cx="160" cy="101" r="2"/>
+    </g>
+    <path d="M60 62L120 29L180 63" stroke="#E1A44B" stroke-opacity="0.65" stroke-width="2"/>
+    <path d="M82 135L86 75M157 135L162 75" stroke="#D6A253" stroke-opacity="0.3" stroke-width="2"/>
+    <path d="M0 159C45 147 76 165 117 155C158 145 198 162 240 149V180H0V159Z" fill="#060C11"/>
+    <path d="M0 163C45 153 83 168 120 160C162 151 198 165 240 154" stroke="#4CD3CA" stroke-opacity="0.3" stroke-width="2"/>
+    <g fill="#8AF1E7" fill-opacity="0.5">
+      <circle cx="36" cy="119" r="1.5"/><circle cx="48" cy="99" r="1"/><circle cx="198" cy="111" r="1.5"/><circle cx="211" cy="93" r="1"/>
+    </g>
+  </g>
+  <rect x="1.5" y="1.5" width="237" height="177" rx="10.5" stroke="#31505A" stroke-width="3"/>
+</svg>

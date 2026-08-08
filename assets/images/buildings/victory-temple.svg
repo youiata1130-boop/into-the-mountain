@@ -1,0 +1,87 @@
+<svg width="240" height="180" viewBox="0 0 240 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="vt-title vt-desc">
+  <title id="vt-title">黄金の勝利神殿</title>
+  <desc id="vt-desc">山頂から黄金の光を放ち、勝利の炎を掲げる荘厳な古代神殿</desc>
+  <defs>
+    <linearGradient id="vt-sky" x1="30" y1="1" x2="211" y2="178" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08111E"/>
+      <stop offset="0.54" stop-color="#20252C"/>
+      <stop offset="1" stop-color="#090C12"/>
+    </linearGradient>
+    <linearGradient id="vt-stone" x1="74" y1="59" x2="163" y2="157" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#746B58"/>
+      <stop offset="0.42" stop-color="#494438"/>
+      <stop offset="1" stop-color="#1B1C1C"/>
+    </linearGradient>
+    <linearGradient id="vt-pillar" x1="79" y1="70" x2="97" y2="141" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#CFBF95"/>
+      <stop offset="0.32" stop-color="#756B55"/>
+      <stop offset="1" stop-color="#2B2B29"/>
+    </linearGradient>
+    <linearGradient id="vt-gold" x1="91" y1="32" x2="145" y2="140" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF0A1"/>
+      <stop offset="0.35" stop-color="#E7AD43"/>
+      <stop offset="0.7" stop-color="#8E5525"/>
+      <stop offset="1" stop-color="#4B2B1C"/>
+    </linearGradient>
+    <linearGradient id="vt-cool" x1="48" y1="92" x2="116" y2="157" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#75C9C2" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#1A6B72" stop-opacity="0.05"/>
+    </linearGradient>
+    <radialGradient id="vt-sun" cx="0" cy="0" r="1" gradientTransform="translate(120 56) rotate(90) scale(73 91)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFC85D" stop-opacity="0.56"/>
+      <stop offset="0.45" stop-color="#D9852D" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#D9852D" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="vt-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <filter id="vt-shadow" x="-25%" y="-25%" width="150%" height="165%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#020408" flood-opacity="0.9"/>
+    </filter>
+    <filter id="vt-fog" x="-20%" y="-100%" width="140%" height="300%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <clipPath id="vt-frame">
+      <rect width="240" height="180" rx="12"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#vt-frame)">
+    <rect width="240" height="180" fill="url(#vt-sky)"/>
+    <ellipse cx="120" cy="61" rx="91" ry="76" fill="url(#vt-sun)"/>
+    <path d="M-9 111L31 69L56 88L88 38L120 78L151 42L180 80L207 54L249 105V138H-9V111Z" fill="#121A23" stroke="#35404A" stroke-width="2"/>
+    <path d="M-8 122L35 87L61 108L91 71L122 105L154 73L183 106L211 83L248 116V143H-8V122Z" fill="#202A30"/>
+    <path d="M0 111C41 94 71 117 111 105C152 92 186 114 240 96V129H0V111Z" fill="#76BEB8" fill-opacity="0.11" filter="url(#vt-fog)"/>
+    <path d="M0 137L39 124L73 132L108 119L143 131L176 118L209 128L240 120V180H0V137Z" fill="#171C20"/>
+    <g filter="url(#vt-shadow)" stroke="#090B0E" stroke-width="4" stroke-linejoin="round">
+      <path d="M50 146H190L181 164H59L50 146Z" fill="#3D392F"/>
+      <path d="M58 132H182L190 148H50L58 132Z" fill="#6B6048"/>
+      <path d="M62 66H178V134H62V66Z" fill="url(#vt-stone)"/>
+      <path d="M48 63L120 27L192 63L180 75H60L48 63Z" fill="#4D4432"/>
+      <path d="M58 62L120 32L182 62H58Z" fill="url(#vt-gold)"/>
+      <path d="M71 71H94L89 133H76L71 71Z" fill="url(#vt-pillar)"/>
+      <path d="M101 71H117L114 133H104L101 71Z" fill="url(#vt-pillar)"/>
+      <path d="M123 71H139L136 133H126L123 71Z" fill="url(#vt-pillar)"/>
+      <path d="M146 71H169L164 133H151L146 71Z" fill="url(#vt-pillar)"/>
+    </g>
+    <path d="M60 74H180" stroke="#F6CF6C" stroke-opacity="0.75" stroke-width="3"/>
+    <path d="M58 133H182" stroke="#DDA64C" stroke-opacity="0.68" stroke-width="3"/>
+    <path d="M66 68L120 36L174 68" stroke="#FFF1A2" stroke-opacity="0.5" stroke-width="2"/>
+    <path d="M72 128L78 77M147 128L154 77" stroke="url(#vt-cool)" stroke-width="3"/>
+    <g>
+      <circle cx="120" cy="52" r="18" fill="#FFC14E" fill-opacity="0.35" filter="url(#vt-glow)"/>
+      <path d="M120 39L124 47L133 48L127 55L129 64L120 59L111 64L113 55L107 48L116 47L120 39Z" fill="url(#vt-gold)" stroke="#5C371D" stroke-width="2"/>
+    </g>
+    <path d="M105 133V110C105 92 135 92 135 110V133H105Z" fill="#0A0C0F" stroke="#16130E" stroke-width="3"/>
+    <path d="M111 131V112C111 101 129 101 129 112V131" stroke="#EDB34C" stroke-opacity="0.56" stroke-width="2"/>
+    <g>
+      <circle cx="70" cy="77" r="8" fill="#F2A33D" fill-opacity="0.28" filter="url(#vt-glow)"/>
+      <path d="M70 81C64 76 69 71 71 65C77 72 77 77 70 81Z" fill="#FFC45C"/>
+      <circle cx="170" cy="77" r="8" fill="#F2A33D" fill-opacity="0.28" filter="url(#vt-glow)"/>
+      <path d="M170 81C164 76 169 71 171 65C177 72 177 77 170 81Z" fill="#FFC45C"/>
+    </g>
+    <path d="M0 159C45 147 78 165 117 155C161 144 199 162 240 149V180H0V159Z" fill="#070A0E"/>
+    <path d="M0 163C45 153 82 168 120 160C163 150 199 165 240 154" stroke="#61AFAA" stroke-opacity="0.26" stroke-width="2"/>
+    <path d="M99 164L120 146L141 164" stroke="#DDA44A" stroke-opacity="0.38" stroke-width="2"/>
+  </g>
+  <rect x="1.5" y="1.5" width="237" height="177" rx="10.5" stroke="#504A3E" stroke-width="3"/>
+</svg>

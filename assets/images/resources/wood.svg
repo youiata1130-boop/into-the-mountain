@@ -1,0 +1,60 @@
+<svg width="240" height="180" viewBox="0 0 240 180" role="img" aria-labelledby="wood-title wood-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="wood-title">Bundle of mountain timber</title>
+  <desc id="wood-desc">A heavy stack of cut timber is bound with rope beneath dark pines, glowing with amber firelight and cool teal mist.</desc>
+  <defs>
+    <linearGradient id="wood-bg" x1="16" y1="8" x2="218" y2="177" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#142839"/>
+      <stop offset="0.55" stop-color="#09151D"/>
+      <stop offset="1" stop-color="#05090D"/>
+    </linearGradient>
+    <linearGradient id="wood-bark" x1="46" y1="95" x2="193" y2="153" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A05C2E"/>
+      <stop offset="0.22" stop-color="#704026"/>
+      <stop offset="0.72" stop-color="#34251F"/>
+      <stop offset="1" stop-color="#142326"/>
+    </linearGradient>
+    <radialGradient id="wood-cut" cx="0" cy="0" r="1" gradientTransform="translate(176 119) scale(32 29)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8AE57"/>
+      <stop offset="0.55" stop-color="#A96835"/>
+      <stop offset="1" stop-color="#573322"/>
+    </radialGradient>
+    <linearGradient id="wood-rope" x1="110" y1="88" x2="126" y2="161" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F0BD63"/>
+      <stop offset="1" stop-color="#7F4C28"/>
+    </linearGradient>
+    <radialGradient id="wood-fire" cx="0" cy="0" r="1" gradientTransform="translate(45 133) rotate(-6) scale(91 63)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F19631" stop-opacity="0.36"/>
+      <stop offset="1" stop-color="#F19631" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="wood-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4"/></filter>
+    <clipPath id="wood-frame"><rect width="240" height="180" rx="18"/></clipPath>
+  </defs>
+  <g clip-path="url(#wood-frame)">
+    <rect width="240" height="180" fill="url(#wood-bg)"/>
+    <ellipse cx="45" cy="133" rx="91" ry="63" fill="url(#wood-fire)"/>
+    <path d="M0 73L27 48L48 66L80 27L111 66L144 39L174 68L204 30L240 66V115H0V73Z" fill="#09151D"/>
+    <path d="M23 116L31 73L20 73L39 41L58 73H47L55 116H23ZM170 118L178 68H166L187 31L208 68H196L204 118H170Z" fill="#102B2D"/>
+    <path d="M-4 111C28 101 56 108 88 104C120 100 145 106 176 99C201 94 222 97 244 104V126H-4V111Z" fill="#70B7B9" opacity="0.1"/>
+    <path d="M-6 137C31 121 67 127 106 119C149 111 200 119 246 131V180H-6V137Z" fill="#071016"/>
+    <ellipse cx="122" cy="161" rx="88" ry="11" fill="#020507" opacity="0.8"/>
+    <g stroke="#090A0B" stroke-width="6" stroke-linejoin="round">
+      <path d="M44 123L58 94L173 87L194 103L180 129L65 137Z" fill="url(#wood-bark)"/>
+      <path d="M48 147L62 118L174 112L194 129L179 155L66 160Z" fill="url(#wood-bark)"/>
+    </g>
+    <path d="M58 96L171 89L185 101L69 109Z" fill="#C37538" opacity="0.43"/>
+    <path d="M62 120L172 114L185 127L70 135Z" fill="#BA6A32" opacity="0.38"/>
+    <path d="M176 88C190 88 199 98 195 109C192 121 178 130 165 126C153 122 151 109 158 99C162 93 168 89 176 88Z" fill="url(#wood-cut)" stroke="#0B0C0D" stroke-width="5"/>
+    <path d="M176 96C184 96 189 101 187 108C186 115 178 120 171 118C164 116 163 109 167 103C169 99 172 97 176 96Z" fill="none" stroke="#6F4127" stroke-width="3"/>
+    <path d="M175 102C179 102 182 105 181 109C180 112 176 115 172 114" fill="none" stroke="#F0C06B" stroke-width="2" stroke-linecap="round"/>
+    <path d="M177 113C191 114 199 124 195 136C191 148 177 157 164 153C151 149 150 136 157 126C162 118 168 114 177 113Z" fill="url(#wood-cut)" stroke="#0B0C0D" stroke-width="5"/>
+    <path d="M176 121C184 121 189 127 187 133C185 140 178 146 171 143C164 141 163 134 167 128C169 124 172 122 176 121Z" fill="none" stroke="#6F4127" stroke-width="3"/>
+    <path d="M175 128C179 128 182 131 181 135C180 138 176 140 172 140" fill="none" stroke="#F0C06B" stroke-width="2" stroke-linecap="round"/>
+    <path d="M108 92L113 159M125 91L130 157" stroke="url(#wood-rope)" stroke-width="9" stroke-linecap="round"/>
+    <path d="M108 109L126 107M111 128L129 127M112 146L130 145" stroke="#57331F" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M48 123L58 96L110 93" fill="none" stroke="#F0A447" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+    <path d="M66 158L113 155" fill="none" stroke="#62A8A9" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+    <g fill="#F5A43D"><circle cx="36" cy="110" r="1.8"/><circle cx="45" cy="94" r="1.2"/><circle cx="205" cy="105" r="1.3"/></g>
+    <g fill="#F5A43D" filter="url(#wood-glow)" opacity="0.75"><circle cx="36" cy="110" r="4"/></g>
+  </g>
+  <rect x="1.5" y="1.5" width="237" height="177" rx="16.5" fill="none" stroke="#34515A" stroke-width="3"/>
+</svg>

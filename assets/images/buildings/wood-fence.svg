@@ -1,0 +1,85 @@
+<svg width="240" height="180" viewBox="0 0 240 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="wf-title wf-desc">
+  <title id="wf-title">荒々しい山岳防柵</title>
+  <desc id="wf-desc">嵐の山道を塞ぐ、尖った丸太と鉄帯で組まれた重厚な防柵</desc>
+  <defs>
+    <linearGradient id="wf-sky" x1="36" y1="8" x2="203" y2="170" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#07111E"/>
+      <stop offset="0.55" stop-color="#172431"/>
+      <stop offset="1" stop-color="#071016"/>
+    </linearGradient>
+    <linearGradient id="wf-horizon" x1="120" y1="44" x2="120" y2="135" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#82C5C4" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#173B42" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="wf-wood" x1="82" y1="52" x2="139" y2="153" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#93613A"/>
+      <stop offset="0.3" stop-color="#56351F"/>
+      <stop offset="0.72" stop-color="#2D1C16"/>
+      <stop offset="1" stop-color="#151217"/>
+    </linearGradient>
+    <linearGradient id="wf-wood-rim" x1="68" y1="51" x2="99" y2="147" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F1B95C"/>
+      <stop offset="0.35" stop-color="#A9632F"/>
+      <stop offset="1" stop-color="#3E2720"/>
+    </linearGradient>
+    <linearGradient id="wf-iron" x1="54" y1="87" x2="185" y2="116" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#172029"/>
+      <stop offset="0.48" stop-color="#53606A"/>
+      <stop offset="0.7" stop-color="#242B31"/>
+      <stop offset="1" stop-color="#0E141B"/>
+    </linearGradient>
+    <linearGradient id="wf-ground" x1="120" y1="124" x2="120" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#263038"/>
+      <stop offset="1" stop-color="#080D13"/>
+    </linearGradient>
+    <radialGradient id="wf-glow" cx="0" cy="0" r="1" gradientTransform="translate(188 64) rotate(137) scale(81 54)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E9A64C" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#E9A64C" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="wf-shadow" x="-25%" y="-25%" width="150%" height="160%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="6" stdDeviation="4" flood-color="#03070C" flood-opacity="0.85"/>
+    </filter>
+    <filter id="wf-soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <clipPath id="wf-frame">
+      <rect width="240" height="180" rx="12"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#wf-frame)">
+    <rect width="240" height="180" fill="url(#wf-sky)"/>
+    <circle cx="190" cy="58" r="66" fill="url(#wf-glow)"/>
+    <path d="M-10 106L36 54L56 76L86 35L112 69L142 44L184 90L208 59L250 101V134H-10V106Z" fill="#101923" stroke="#293844" stroke-width="2"/>
+    <path d="M-8 119L31 78L56 101L88 65L119 104L150 70L183 102L210 82L248 117V142H-8V119Z" fill="#1A2931"/>
+    <path d="M0 103C40 91 67 116 105 104C146 91 170 110 240 94V130H0V103Z" fill="url(#wf-horizon)" filter="url(#wf-soft)"/>
+    <path d="M0 125C44 114 84 129 116 122C159 112 198 119 240 108V136H0V125Z" fill="#8DC0BA" fill-opacity="0.12"/>
+    <path d="M0 132L30 124L58 130L83 119L112 130L145 119L173 127L205 115L240 121V180H0V132Z" fill="url(#wf-ground)"/>
+    <path d="M0 151L35 141L65 149L91 137L127 148L157 136L190 145L223 131L240 135V180H0V151Z" fill="#0B1118"/>
+    <g filter="url(#wf-shadow)" stroke-linejoin="round">
+      <g>
+        <path d="M29 148L35 71L45 48L55 72L59 148Z" fill="url(#wf-wood)" stroke="#0B0D11" stroke-width="5"/>
+        <path d="M39 70L45 52L48 146H39V70Z" fill="url(#wf-wood-rim)"/>
+        <path d="M65 151L69 58L80 29L91 57L95 151Z" fill="url(#wf-wood)" stroke="#0B0D11" stroke-width="5"/>
+        <path d="M75 57L80 34L83 149H75V57Z" fill="url(#wf-wood-rim)"/>
+        <path d="M103 153L107 65L118 39L130 65L134 153Z" fill="url(#wf-wood)" stroke="#0B0D11" stroke-width="5"/>
+        <path d="M113 65L118 43L121 151H113V65Z" fill="url(#wf-wood-rim)"/>
+        <path d="M143 151L146 57L158 26L170 58L174 151Z" fill="url(#wf-wood)" stroke="#0B0D11" stroke-width="5"/>
+        <path d="M152 57L158 31L161 149H152V57Z" fill="url(#wf-wood-rim)"/>
+        <path d="M183 149L186 71L197 44L208 70L212 149Z" fill="url(#wf-wood)" stroke="#0B0D11" stroke-width="5"/>
+        <path d="M192 70L197 49L200 147H192V70Z" fill="url(#wf-wood-rim)"/>
+      </g>
+      <path d="M24 78L216 91L213 106L22 93Z" fill="url(#wf-iron)" stroke="#0A0D12" stroke-width="4"/>
+      <path d="M20 113L216 121L213 137L18 129Z" fill="url(#wf-iron)" stroke="#0A0D12" stroke-width="4"/>
+      <path d="M30 80L208 92" stroke="#A2CFCA" stroke-opacity="0.3" stroke-width="2"/>
+      <path d="M26 115L207 122" stroke="#D59648" stroke-opacity="0.48" stroke-width="2"/>
+    </g>
+    <g fill="#DCA452" stroke="#17100D" stroke-width="2">
+      <circle cx="47" cy="88" r="4"/><circle cx="83" cy="91" r="4"/><circle cx="120" cy="94" r="4"/><circle cx="159" cy="96" r="4"/><circle cx="197" cy="99" r="4"/>
+      <circle cx="43" cy="122" r="4"/><circle cx="82" cy="124" r="4"/><circle cx="121" cy="126" r="4"/><circle cx="159" cy="127" r="4"/><circle cx="198" cy="129" r="4"/>
+    </g>
+    <path d="M66 150L71 116M102 151L108 126M142 151L149 119M178 149L185 126" stroke="#E5A24B" stroke-opacity="0.45" stroke-width="2"/>
+    <path d="M0 165C48 154 77 172 119 162C162 152 201 166 240 154V180H0V165Z" fill="#060A0F"/>
+    <path d="M0 168C56 157 93 174 134 164C170 155 209 166 240 159" stroke="#67AAA8" stroke-opacity="0.22" stroke-width="2"/>
+  </g>
+  <rect x="1.5" y="1.5" width="237" height="177" rx="10.5" stroke="#31434E" stroke-width="3"/>
+</svg>

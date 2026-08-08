@@ -1,0 +1,60 @@
+<svg width="240" height="180" viewBox="0 0 240 180" role="img" aria-labelledby="stone-title stone-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="stone-title">Mountain stone blocks</title>
+  <desc id="stone-desc">Three rugged quarried stones rise from a misty mountain floor with amber edges and blue-green reflected light.</desc>
+  <defs>
+    <linearGradient id="stone-bg" x1="18" y1="7" x2="221" y2="178" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#172738"/>
+      <stop offset="0.52" stop-color="#0A151F"/>
+      <stop offset="1" stop-color="#05090E"/>
+    </linearGradient>
+    <linearGradient id="stone-face" x1="65" y1="61" x2="168" y2="161" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#687278"/>
+      <stop offset="0.5" stop-color="#303A40"/>
+      <stop offset="1" stop-color="#151D23"/>
+    </linearGradient>
+    <linearGradient id="stone-side" x1="153" y1="71" x2="193" y2="147" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#334950"/>
+      <stop offset="1" stop-color="#10181D"/>
+    </linearGradient>
+    <linearGradient id="stone-rim" x1="72" y1="70" x2="158" y2="118" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2B14C"/>
+      <stop offset="0.5" stop-color="#B96C29"/>
+      <stop offset="1" stop-color="#55A9AE"/>
+    </linearGradient>
+    <radialGradient id="stone-fire" cx="0" cy="0" r="1" gradientTransform="translate(39 137) rotate(-14) scale(87 63)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EA8D2E" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#EA8D2E" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="stone-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4"/></filter>
+    <clipPath id="stone-frame"><rect width="240" height="180" rx="18"/></clipPath>
+  </defs>
+  <g clip-path="url(#stone-frame)">
+    <rect width="240" height="180" fill="url(#stone-bg)"/>
+    <ellipse cx="40" cy="136" rx="88" ry="62" fill="url(#stone-fire)"/>
+    <path d="M-3 75L26 48L48 69L77 31L106 66L137 39L166 70L200 29L243 71V117H-3V75Z" fill="#0A151F"/>
+    <path d="M0 92L31 69L56 84L84 60L111 86L140 64L165 84L194 59L220 78L240 67V123H0V92Z" fill="#16313A" opacity="0.67"/>
+    <path d="M-10 111C22 100 44 111 72 106C101 101 125 106 153 99C187 91 218 99 250 105V127H-10V111Z" fill="#78BEC0" opacity="0.11"/>
+    <path d="M-5 137C34 120 75 127 113 119C156 110 199 118 245 129V180H-5V137Z" fill="#071016"/>
+    <ellipse cx="125" cy="159" rx="84" ry="12" fill="#020507" opacity="0.82"/>
+    <path d="M51 146L55 111L74 88L102 84L120 105L115 139L95 156L67 155Z" fill="url(#stone-face)" stroke="#05090C" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M55 111L75 91L101 87L87 113L62 128Z" fill="#70797D" opacity="0.58"/>
+    <path d="M116 144L116 91L140 61L173 66L190 91L187 133L166 155L137 159Z" fill="url(#stone-face)" stroke="#05090C" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M140 63L173 68L158 98L123 107L119 92Z" fill="#737E82" opacity="0.62"/>
+    <path d="M173 68L190 92L186 133L164 153L158 99Z" fill="url(#stone-side)"/>
+    <path d="M118 92L140 62L173 67" fill="none" stroke="url(#stone-rim)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M81 94L101 86L118 105" fill="none" stroke="#E6A345" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+    <path d="M142 79L151 95L142 111L153 126L146 144" fill="none" stroke="#17242A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M142 80L150 95L142 110" fill="none" stroke="#79C5C6" stroke-width="1.8" stroke-linecap="round" opacity="0.65"/>
+    <path d="M77 107L88 118L81 132L91 145" fill="none" stroke="#1A2429" stroke-width="4" stroke-linecap="round"/>
+    <path d="M53 146L67 154L96 155" fill="none" stroke="#C67A2F" stroke-width="2.5" stroke-linecap="round" opacity="0.62"/>
+    <path d="M116 144L137 158L166 154" fill="none" stroke="#4D9499" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+    <g fill="#EFA33E">
+      <circle cx="39" cy="106" r="1.7"/>
+      <circle cx="48" cy="92" r="1.1"/>
+      <circle cx="203" cy="105" r="1.4"/>
+    </g>
+    <g fill="#F5A93E" filter="url(#stone-glow)" opacity="0.72"><circle cx="39" cy="106" r="4"/></g>
+    <path d="M206 50L208 57L215 59L208 61L206 68L204 61L197 59L204 57Z" fill="#75C5C8" opacity="0.5"/>
+  </g>
+  <rect x="1.5" y="1.5" width="237" height="177" rx="16.5" fill="none" stroke="#34505A" stroke-width="3"/>
+</svg>

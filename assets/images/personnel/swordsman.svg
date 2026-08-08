@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="180" viewBox="0 0 240 180" role="img" aria-labelledby="sw-title sw-desc">
+  <title id="sw-title">山塞の剣士</title>
+  <desc id="sw-desc">冷たい山霧の中、琥珀色に縁取られた鎧と長剣を構える剣士</desc>
+  <defs>
+    <linearGradient id="sw-bg" x1="19" y1="4" x2="221" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#172C3B"/>
+      <stop offset="0.55" stop-color="#0B1623"/>
+      <stop offset="1" stop-color="#060B12"/>
+    </linearGradient>
+    <linearGradient id="sw-armor" x1="70" y1="67" x2="147" y2="174" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A6BDC0"/>
+      <stop offset="0.28" stop-color="#536D75"/>
+      <stop offset="0.62" stop-color="#293B47"/>
+      <stop offset="1" stop-color="#131D29"/>
+    </linearGradient>
+    <linearGradient id="sw-blade" x1="143" y1="138" x2="203" y2="18" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#526C73"/>
+      <stop offset="0.42" stop-color="#E5F2EE"/>
+      <stop offset="0.7" stop-color="#86A7A8"/>
+      <stop offset="1" stop-color="#F4C26A"/>
+    </linearGradient>
+    <linearGradient id="sw-cloak" x1="50" y1="101" x2="89" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#315D60"/>
+      <stop offset="1" stop-color="#142B35"/>
+    </linearGradient>
+    <radialGradient id="sw-backlight" cx="0" cy="0" r="1" gradientTransform="translate(158 47) rotate(127) scale(86 91)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DDA047" stop-opacity="0.48"/>
+      <stop offset="1" stop-color="#DDA047" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="sw-soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="8"/></filter>
+    <filter id="sw-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="sw-frame"><rect width="240" height="180" rx="12"/></clipPath>
+  </defs>
+  <g clip-path="url(#sw-frame)">
+    <rect width="240" height="180" fill="url(#sw-bg)"/>
+    <ellipse cx="159" cy="45" rx="70" ry="62" fill="url(#sw-backlight)" filter="url(#sw-soft)"/>
+    <path d="M0 92 31 59l26 25 25-42 34 44 26-31 37 37 22-27 39 37v78H0Z" fill="#132A33"/>
+    <path d="M0 119 44 82l28 32 29-25 29 31 37-39 33 38 20-16 20 19v58H0Z" fill="#091721"/>
+    <path d="M0 119c43-12 72 4 113-1 46-5 75-18 127-5v18c-48-10-85 4-126 8-45 4-77-8-114 2Z" fill="#67A2A0" opacity="0.1"/>
+    <path d="M14 101h30V75l10-10 10 10v26h20v79H14Z" fill="#0B141D" opacity="0.9"/>
+    <path d="M44 76h20M54 65v36" stroke="#3F6670" stroke-width="2" opacity="0.55"/>
+
+    <!-- Cloak silhouette -->
+    <path d="M45 180c4-38 14-68 38-84l33 18-14 66Z" fill="#071018" stroke="#070C12" stroke-width="6"/>
+    <path d="M49 180c4-34 15-62 38-78l25 15-14 63Z" fill="url(#sw-cloak)"/>
+    <path d="M55 166c17-8 29-24 36-48" fill="none" stroke="#609291" stroke-width="2" opacity="0.55"/>
+
+    <!-- Armored body -->
+    <path d="M70 180c1-40 7-73 32-85 11-5 25-5 37 1 25 12 32 45 34 84Z" fill="#0A1119" stroke="#071018" stroke-width="7"/>
+    <path d="M75 180c1-36 7-67 29-78 10-5 22-5 32 0 22 11 29 42 31 78Z" fill="url(#sw-armor)" stroke="#152631" stroke-width="3"/>
+    <path d="m90 109 29 22 31-22" fill="none" stroke="#A8C0BE" stroke-width="5"/>
+    <path d="M93 116v64m53-64v64" stroke="#172833" stroke-width="4"/>
+    <path d="M82 142h78" stroke="#D69B4B" stroke-width="3"/>
+    <path d="m86 148 14 3 7 29H78Zm70 0-14 3-7 29h29Z" fill="#1A2C38"/>
+    <path d="M106 132h26v18h-26Z" fill="#304A55" stroke="#0C1821" stroke-width="3"/>
+    <path d="m113 136 6 6 7-6" fill="none" stroke="#D7A452" stroke-width="2"/>
+
+    <!-- Helmet and face -->
+    <path d="M86 64c0-25 13-41 34-41 22 0 36 16 36 42l-7 35-29 14-28-14Z" fill="#0A1118" stroke="#060C12" stroke-width="6"/>
+    <path d="M91 64c0-22 11-35 29-35 19 0 30 14 30 36l-6 31-24 12-23-12Z" fill="url(#sw-armor)" stroke="#708C90" stroke-width="2"/>
+    <path d="M96 66c5-12 13-19 24-19 12 0 20 7 25 19l-5 25-20 10-19-10Z" fill="#9D654A"/>
+    <path d="M94 63c1-21 11-34 26-34 17 0 28 13 29 34l-12-9-17 7-17-7Z" fill="#405A63"/>
+    <path d="M91 65h58l-4 17-25 6-25-6Z" fill="#253A45" stroke="#0B151D" stroke-width="3"/>
+    <path d="m101 71 15 2m8 0 15-2" stroke="#CBEEE9" stroke-width="3" stroke-linecap="round" filter="url(#sw-glow)"/>
+    <path d="M110 94c7 4 14 4 20 0" fill="none" stroke="#5E392F" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M97 40c8-11 18-14 29-11" fill="none" stroke="#E2AA55" stroke-width="2" stroke-linecap="round"/>
+    <path d="m120 22 7-10 6 18" fill="#BC8440" stroke="#0C151B" stroke-width="3"/>
+
+    <!-- Sword across the frame -->
+    <path d="m121 169 17-41 51-102 22-16-1 26-58 99-23 38Z" fill="#071018" stroke="#060A0E" stroke-width="7" stroke-linejoin="round"/>
+    <path d="m128 166 15-36 51-99 12-12-2 15-57 98-19 34Z" fill="url(#sw-blade)" stroke="#A8C6C3" stroke-width="1.7" stroke-linejoin="round"/>
+    <path d="m145 129 52-99" stroke="#F0BC61" stroke-width="2" opacity="0.8"/>
+    <path d="m119 121 42 25" stroke="#0A1117" stroke-width="12" stroke-linecap="round"/>
+    <path d="m119 121 42 25" stroke="#C99A50" stroke-width="7" stroke-linecap="round"/>
+    <path d="m130 137-16 27" stroke="#0A1015" stroke-width="15" stroke-linecap="round"/>
+    <path d="m130 137-16 27" stroke="#5D3928" stroke-width="9" stroke-linecap="round"/>
+    <path d="M123 119c9-2 17 5 16 14l-11 13-17-10-1-12Z" fill="#536F74" stroke="#081018" stroke-width="4"/>
+    <path d="m115 126 18 10" stroke="#AEC4C0" stroke-width="2"/>
+
+    <g fill="#E4A34B" filter="url(#sw-glow)"><circle cx="176" cy="36" r="1.4"/><circle cx="214" cy="58" r="1"/><circle cx="72" cy="38" r="1"/></g>
+    <path d="M4 174h232" stroke="#D69C4B" stroke-width="2" opacity="0.5"/>
+    <rect x="1.5" y="1.5" width="237" height="177" rx="10.5" fill="none" stroke="#3A5661" stroke-width="3"/>
+  </g>
+</svg>

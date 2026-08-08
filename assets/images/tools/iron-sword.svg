@@ -1,0 +1,60 @@
+<svg width="240" height="180" viewBox="0 0 240 180" role="img" aria-labelledby="iron-sword-title iron-sword-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="iron-sword-title">Iron mountain sword</title>
+  <desc id="iron-sword-desc">A polished iron longsword stands before storm-dark peaks, edged by amber sparks and icy teal reflections.</desc>
+  <defs>
+    <linearGradient id="iron-sword-bg" x1="20" y1="7" x2="218" y2="178" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#172A3C"/>
+      <stop offset="0.52" stop-color="#09141F"/>
+      <stop offset="1" stop-color="#04080D"/>
+    </linearGradient>
+    <linearGradient id="iron-sword-blade" x1="102" y1="24" x2="136" y2="111" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8D08A"/>
+      <stop offset="0.18" stop-color="#E5EFF0"/>
+      <stop offset="0.55" stop-color="#7595A0"/>
+      <stop offset="1" stop-color="#263B45"/>
+    </linearGradient>
+    <linearGradient id="iron-sword-bevel" x1="120" y1="18" x2="120" y2="107" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="0.48" stop-color="#A8C4C8"/>
+      <stop offset="1" stop-color="#3D5A63"/>
+    </linearGradient>
+    <linearGradient id="iron-sword-gold" x1="74" y1="99" x2="164" y2="128" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2B950"/>
+      <stop offset="0.52" stop-color="#8E5729"/>
+      <stop offset="1" stop-color="#3C2B24"/>
+    </linearGradient>
+    <radialGradient id="iron-sword-fire" cx="0" cy="0" r="1" gradientTransform="translate(48 127) rotate(-10) scale(88 65)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F29531" stop-opacity="0.33"/>
+      <stop offset="1" stop-color="#F29531" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="iron-sword-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4"/></filter>
+    <filter id="iron-sword-shadow" x="-40%" y="-30%" width="180%" height="180%"><feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity="0.75"/></filter>
+    <clipPath id="iron-sword-frame"><rect width="240" height="180" rx="18"/></clipPath>
+  </defs>
+  <g clip-path="url(#iron-sword-frame)">
+    <rect width="240" height="180" fill="url(#iron-sword-bg)"/>
+    <ellipse cx="48" cy="127" rx="88" ry="65" fill="url(#iron-sword-fire)"/>
+    <path d="M-3 76L28 48L50 68L82 26L114 66L143 38L171 68L205 27L243 67V118H-3V76Z" fill="#09151F"/>
+    <path d="M0 91L28 70L56 84L84 58L111 86L141 62L169 85L199 58L222 78L240 68V121H0V91Z" fill="#14303A" opacity="0.7"/>
+    <path d="M-7 109C30 100 59 109 93 103C123 98 153 105 184 97C207 91 224 96 247 103V125H-7V109Z" fill="#7CC4C5" opacity="0.1"/>
+    <path d="M-7 140C37 119 73 130 112 119C154 108 203 117 247 133V180H-7V140Z" fill="#060E14"/>
+    <ellipse cx="120" cy="159" rx="54" ry="10" fill="#020406" opacity="0.8"/>
+    <g filter="url(#iron-sword-shadow)">
+      <path d="M120 13L139 39L130 101L120 111L110 101L101 39L120 13Z" fill="url(#iron-sword-blade)" stroke="#05090D" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M120 21V103L127 96L134 41L120 21Z" fill="url(#iron-sword-bevel)" opacity="0.86"/>
+      <path d="M120 21V103L113 96L106 41L120 21Z" fill="#405863" opacity="0.55"/>
+      <path d="M120 16L103 40" fill="none" stroke="#F3B653" stroke-width="3" stroke-linecap="round" opacity="0.86"/>
+      <path d="M120 20L137 40" fill="none" stroke="#87D0D1" stroke-width="2" stroke-linecap="round" opacity="0.72"/>
+      <path d="M81 100L108 96L120 105L132 96L159 100L168 110L158 120L132 113L126 119H114L108 113L82 120L72 110L81 100Z" fill="url(#iron-sword-gold)" stroke="#070A0D" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M80 102L108 99L120 108L132 99L159 102" fill="none" stroke="#F5C268" stroke-width="3" stroke-linecap="round"/>
+      <rect x="112" y="113" width="16" height="35" rx="7" fill="#422B24" stroke="#07090C" stroke-width="5"/>
+      <path d="M113 119L127 126M113 130L127 137M113 141L124 146" stroke="#C1823D" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M120 143L135 152L130 164H110L105 152L120 143Z" fill="url(#iron-sword-gold)" stroke="#06090C" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M120 149L127 154L124 159H116L113 154Z" fill="#72BCC0" stroke="#16282E" stroke-width="2"/>
+    </g>
+    <g fill="#F3A33E"><circle cx="47" cy="104" r="1.8"/><circle cx="58" cy="88" r="1.1"/><circle cx="184" cy="91" r="1.5"/><circle cx="195" cy="108" r="1"/></g>
+    <g fill="#F5A43C" filter="url(#iron-sword-glow)" opacity="0.78"><circle cx="47" cy="104" r="4"/><circle cx="184" cy="91" r="3"/></g>
+    <path d="M195 48L197 55L204 57L197 59L195 66L193 59L186 57L193 55Z" fill="#78CBCC" opacity="0.65"/>
+  </g>
+  <rect x="1.5" y="1.5" width="237" height="177" rx="16.5" fill="none" stroke="#35525E" stroke-width="3"/>
+</svg>

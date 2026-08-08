@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="180" viewBox="0 0 240 180" role="img" aria-labelledby="lj-title lj-desc">
+  <title id="lj-title">山岳の木こり</title>
+  <desc id="lj-desc">琥珀色の逆光を背に、巨大な斧を構える屈強な木こり</desc>
+  <defs>
+    <linearGradient id="lj-bg" x1="22" y1="8" x2="218" y2="176" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#142936"/>
+      <stop offset="0.52" stop-color="#0B1722"/>
+      <stop offset="1" stop-color="#070D14"/>
+    </linearGradient>
+    <linearGradient id="lj-haze" x1="120" y1="18" x2="120" y2="156" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D99943" stop-opacity="0.36"/>
+      <stop offset="0.55" stop-color="#397A7D" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#071018" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="lj-coat" x1="68" y1="104" x2="137" y2="178" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#35575A"/>
+      <stop offset="0.5" stop-color="#203B41"/>
+      <stop offset="1" stop-color="#101D29"/>
+    </linearGradient>
+    <linearGradient id="lj-skin" x1="85" y1="51" x2="122" y2="111" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DDA66F"/>
+      <stop offset="0.5" stop-color="#B86E46"/>
+      <stop offset="1" stop-color="#693C32"/>
+    </linearGradient>
+    <linearGradient id="lj-steel" x1="184" y1="17" x2="215" y2="69" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E7F4F0"/>
+      <stop offset="0.35" stop-color="#9CB7B4"/>
+      <stop offset="0.68" stop-color="#536B70"/>
+      <stop offset="1" stop-color="#1A2932"/>
+    </linearGradient>
+    <radialGradient id="lj-ember" cx="0" cy="0" r="1" gradientTransform="translate(169 42) rotate(121) scale(85 91)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2A74B" stop-opacity="0.58"/>
+      <stop offset="1" stop-color="#F2A74B" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="lj-soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <filter id="lj-glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="lj-frame"><rect width="240" height="180" rx="12"/></clipPath>
+  </defs>
+  <g clip-path="url(#lj-frame)">
+    <rect width="240" height="180" fill="url(#lj-bg)"/>
+    <ellipse cx="171" cy="44" rx="67" ry="58" fill="url(#lj-ember)" filter="url(#lj-soft)"/>
+    <path d="M0 91 31 58l22 21 31-45 36 47 23-29 45 48 22-25 30 28v77H0Z" fill="#122A32"/>
+    <path d="M0 117 39 77l25 31 30-22 25 30 34-40 43 45 20-18 24 25v52H0Z" fill="#0A1822"/>
+    <path d="M0 104c43-11 70 5 104 1 45-5 74-25 136-9v23c-54-15-85 4-131 8-38 3-70-10-109-1Z" fill="url(#lj-haze)" opacity="0.52"/>
+    <g fill="#E39A43" filter="url(#lj-glow)">
+      <circle cx="31" cy="49" r="1.5"/><circle cx="51" cy="33" r="1"/><circle cx="151" cy="24" r="1.4"/><circle cx="164" cy="70" r="1"/>
+    </g>
+
+    <!-- Massive axe -->
+    <path d="M145 173 188 58" stroke="#10171B" stroke-width="15" stroke-linecap="round"/>
+    <path d="M145 173 188 58" stroke="#81512F" stroke-width="10" stroke-linecap="round"/>
+    <path d="M148 166 188 61" stroke="#C18445" stroke-width="2.5" stroke-linecap="round" opacity="0.78"/>
+    <path d="M178 29c17-12 37-13 54-5l-9 28c-10 11-25 15-43 12l10-18Z" fill="#0A1118" stroke="#080D12" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M179 27c17-10 35-11 51-4l-10 25c-10 10-23 13-39 11l10-17Z" fill="url(#lj-steel)" stroke="#A6C6C3" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="m181 59 10-17-12-15-8 32Z" fill="#2A3B40" stroke="#0B1218" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M188 30c13-6 27-7 38-3" stroke="#F2B35B" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+
+    <!-- Broad body -->
+    <path d="M31 180c4-35 13-62 36-75 11-7 25-10 41-9 30 1 51 19 59 44l11 40Z" fill="#0A1017" stroke="#071018" stroke-width="7"/>
+    <path d="M34 180c4-31 13-56 35-68 12-7 25-9 39-8 27 2 45 19 52 42l9 34Z" fill="url(#lj-coat)" stroke="#0C1922" stroke-width="3"/>
+    <path d="M45 137c12-22 29-33 52-33l-7 76H35Z" fill="#284D4F"/>
+    <path d="M96 104c26 0 45 16 53 38l-18 6-13-44Z" fill="#172B34"/>
+    <path d="m74 111 17 22 16-29" fill="none" stroke="#D08B42" stroke-width="4" stroke-linecap="round"/>
+    <path d="M58 180 72 143m58 37-7-42" stroke="#12232C" stroke-width="5"/>
+    <path d="m40 158 20-6m81 2 18-7" stroke="#568083" stroke-width="2" opacity="0.65"/>
+
+    <!-- Head, hair and beard -->
+    <path d="M70 65c0-25 14-40 36-40 21 0 34 16 33 40l-5 32-23 24-27-15-12-27Z" fill="#11181D" stroke="#081016" stroke-width="5"/>
+    <path d="M77 61c2-19 12-30 29-30 18 0 28 14 27 33l-5 25-20 18-23-12-8-20Z" fill="url(#lj-skin)"/>
+    <path d="M72 62c2-28 21-42 42-34 13 5 20 16 21 33-9-10-16-15-25-17-9 10-21 16-38 18Z" fill="#251C19"/>
+    <path d="M77 82c8 1 13 4 18 9l12-8 22 6-2 18-17 18-25-11-10-19Z" fill="#4C2B23" stroke="#171315" stroke-width="3"/>
+    <path d="M91 90c8 8 20 9 28 1l-3 17-12 7-12-7Z" fill="#74402C"/>
+    <path d="M86 69h14m14 0h12" stroke="#281A17" stroke-width="5" stroke-linecap="round"/>
+    <path d="M91 72h7m17 0h7" stroke="#DCEBE4" stroke-width="2" stroke-linecap="round"/>
+    <path d="m106 72-3 13 7 2" fill="none" stroke="#754334" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M76 59c4-15 14-24 30-27" stroke="#E0A152" stroke-width="2" stroke-linecap="round" opacity="0.82"/>
+
+    <!-- Hands gripping the axe -->
+    <path d="M128 119c10-3 20 2 23 12l-8 22-22-8-3-13Z" fill="url(#lj-skin)" stroke="#0A1117" stroke-width="4"/>
+    <path d="m125 128 21 8m-22 1 19 8" stroke="#754032" stroke-width="2" stroke-linecap="round"/>
+    <path d="M151 149c9-3 18 3 19 12l-5 19h-23l-5-17Z" fill="#9A593C" stroke="#081018" stroke-width="4"/>
+    <path d="m143 158 21 7m-21 2 19 6" stroke="#693B30" stroke-width="2" stroke-linecap="round"/>
+
+    <path d="M4 174h232" stroke="#D89543" stroke-width="2" opacity="0.55"/>
+    <rect x="1.5" y="1.5" width="237" height="177" rx="10.5" fill="none" stroke="#37515A" stroke-width="3"/>
+  </g>
+</svg>

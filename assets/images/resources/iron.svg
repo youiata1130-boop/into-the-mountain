@@ -1,0 +1,70 @@
+<svg width="240" height="180" viewBox="0 0 240 180" role="img" aria-labelledby="iron-title iron-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="iron-title">Iron ore in a mountain cavern</title>
+  <desc id="iron-desc">A massive iron-rich boulder catches amber firelight and cold teal reflections beneath jagged mountain silhouettes.</desc>
+  <defs>
+    <linearGradient id="iron-bg" x1="22" y1="9" x2="214" y2="176" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#142638"/>
+      <stop offset="0.55" stop-color="#09141F"/>
+      <stop offset="1" stop-color="#05090F"/>
+    </linearGradient>
+    <linearGradient id="iron-rock" x1="76" y1="62" x2="172" y2="154" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4B5961"/>
+      <stop offset="0.48" stop-color="#27323A"/>
+      <stop offset="1" stop-color="#111820"/>
+    </linearGradient>
+    <linearGradient id="iron-metal" x1="95" y1="71" x2="151" y2="127" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F1B75A"/>
+      <stop offset="0.18" stop-color="#DDE8E8"/>
+      <stop offset="0.52" stop-color="#718E99"/>
+      <stop offset="1" stop-color="#243943"/>
+    </linearGradient>
+    <linearGradient id="iron-ingot" x1="53" y1="136" x2="185" y2="167" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C8D9DA"/>
+      <stop offset="0.45" stop-color="#60737C"/>
+      <stop offset="1" stop-color="#283740"/>
+    </linearGradient>
+    <radialGradient id="iron-ember" cx="0" cy="0" r="1" gradientTransform="translate(51 124) rotate(-8) scale(91 71)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F29B38" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#F29B38" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="iron-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3.5"/>
+    </filter>
+    <clipPath id="iron-frame"><rect width="240" height="180" rx="18"/></clipPath>
+  </defs>
+  <g clip-path="url(#iron-frame)">
+    <rect width="240" height="180" fill="url(#iron-bg)"/>
+    <ellipse cx="53" cy="127" rx="91" ry="67" fill="url(#iron-ember)"/>
+    <path d="M0 72L31 42L52 63L82 27L114 65L142 39L174 69L204 31L240 64V110H0V72Z" fill="#0B1721"/>
+    <path d="M0 83L29 61L49 76L79 49L104 76L132 56L158 78L189 54L215 73L240 57V117H0V83Z" fill="#132A34" opacity="0.75"/>
+    <path d="M8 101C43 89 66 107 98 98C134 88 160 99 192 91C210 86 227 88 244 94V119H-4V107L8 101Z" fill="#6FB2B5" opacity="0.09"/>
+    <path d="M-8 127C31 113 67 119 101 113C143 106 190 109 248 121V180H-8V127Z" fill="#071017"/>
+    <ellipse cx="124" cy="157" rx="78" ry="12" fill="#020508" opacity="0.82"/>
+    <path d="M64 137L72 91L91 62L127 49L159 64L178 99L168 137L142 155L94 153L64 137Z" fill="url(#iron-rock)" stroke="#05090E" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M74 92L94 67L126 54L113 87L85 108Z" fill="#5D6B70" opacity="0.7"/>
+    <path d="M128 54L155 68L171 99L143 91L113 87Z" fill="#303C44"/>
+    <path d="M85 108L113 87L143 91L151 126L126 148L93 144L70 134Z" fill="#202B33"/>
+    <path d="M74 89L92 65L126 52" fill="none" stroke="#E4A546" stroke-width="3" stroke-linecap="round" opacity="0.86"/>
+    <path d="M105 71L123 64L137 78L128 98L106 101L96 87Z" fill="url(#iron-metal)" stroke="#0B1218" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M137 104L155 98L165 111L157 130L139 135L128 121Z" fill="url(#iron-metal)" stroke="#0B1218" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M82 112L96 105L108 117L103 134L87 138L77 126Z" fill="url(#iron-metal)" stroke="#0B1218" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M105 72L123 65L113 88L99 87Z" fill="#F3CF8B" opacity="0.55"/>
+    <path d="M140 105L155 100L148 119L134 121Z" fill="#CBE2E1" opacity="0.45"/>
+    <path d="M58 145L108 137L119 148L111 164L59 167L47 156Z" fill="url(#iron-ingot)" stroke="#070C11" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M109 145L166 137L188 149L181 164L124 168L111 160L119 148Z" fill="url(#iron-ingot)" stroke="#070C11" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M59 147L106 141L113 148L61 154L51 153Z" fill="#E9B35C" opacity="0.42"/>
+    <path d="M121 149L165 142L181 150L130 156Z" fill="#B9D2D4" opacity="0.42"/>
+    <g fill="#F5B24E">
+      <circle cx="43" cy="104" r="2.2"/>
+      <circle cx="55" cy="89" r="1.5"/>
+      <circle cx="188" cy="92" r="1.7"/>
+      <circle cx="197" cy="111" r="1.2"/>
+    </g>
+    <g fill="#FFC76A" filter="url(#iron-glow)" opacity="0.75">
+      <circle cx="43" cy="104" r="4"/>
+      <circle cx="188" cy="92" r="3"/>
+    </g>
+    <path d="M196 44L198 51L205 53L198 55L196 62L194 55L187 53L194 51Z" fill="#77C8CB" opacity="0.65"/>
+  </g>
+  <rect x="1.5" y="1.5" width="237" height="177" rx="16.5" fill="none" stroke="#34505B" stroke-width="3"/>
+</svg>

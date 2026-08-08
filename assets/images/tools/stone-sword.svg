@@ -1,0 +1,53 @@
+<svg width="240" height="180" viewBox="0 0 240 180" role="img" aria-labelledby="stone-sword-title stone-sword-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="stone-sword-title">Jagged stone sword</title>
+  <desc id="stone-sword-desc">A brutal chipped stone blade stands against shadowed peaks, crossed by teal fractures and edged in amber firelight.</desc>
+  <defs>
+    <linearGradient id="stone-sword-bg" x1="18" y1="7" x2="218" y2="178" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#172939"/>
+      <stop offset="0.53" stop-color="#09141D"/>
+      <stop offset="1" stop-color="#04080C"/>
+    </linearGradient>
+    <linearGradient id="stone-sword-blade" x1="98" y1="24" x2="139" y2="112" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DDA34C"/>
+      <stop offset="0.18" stop-color="#707A7B"/>
+      <stop offset="0.55" stop-color="#39464A"/>
+      <stop offset="1" stop-color="#18262B"/>
+    </linearGradient>
+    <linearGradient id="stone-sword-leather" x1="111" y1="110" x2="132" y2="159" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B36C35"/>
+      <stop offset="1" stop-color="#35251F"/>
+    </linearGradient>
+    <radialGradient id="stone-sword-fire" cx="0" cy="0" r="1" gradientTransform="translate(44 128) rotate(-10) scale(88 64)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EE9230" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#EE9230" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="stone-sword-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4"/></filter>
+    <filter id="stone-sword-shadow" x="-40%" y="-30%" width="180%" height="180%"><feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity="0.8"/></filter>
+    <clipPath id="stone-sword-frame"><rect width="240" height="180" rx="18"/></clipPath>
+  </defs>
+  <g clip-path="url(#stone-sword-frame)">
+    <rect width="240" height="180" fill="url(#stone-sword-bg)"/>
+    <ellipse cx="44" cy="128" rx="88" ry="64" fill="url(#stone-sword-fire)"/>
+    <path d="M-3 76L29 47L52 68L82 27L113 66L143 38L171 69L205 28L243 68V118H-3V76Z" fill="#09151E"/>
+    <path d="M0 92L30 70L57 84L85 60L112 85L141 62L168 85L198 59L223 79L240 69V122H0V92Z" fill="#15313A" opacity="0.68"/>
+    <path d="M-8 110C26 101 54 110 86 104C116 99 148 105 177 98C203 92 226 98 248 104V125H-8V110Z" fill="#73BFC0" opacity="0.1"/>
+    <path d="M-5 141C33 122 72 131 111 120C155 109 203 119 245 133V180H-5V141Z" fill="#060E14"/>
+    <ellipse cx="120" cy="160" rx="52" ry="10" fill="#020406" opacity="0.8"/>
+    <g filter="url(#stone-sword-shadow)">
+      <path d="M120 14L137 37L132 54L140 65L132 78L136 91L127 107L113 107L103 93L108 80L100 67L107 54L102 39L120 14Z" fill="url(#stone-sword-blade)" stroke="#05090C" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M120 20L120 102L127 97L131 89L127 76L134 64L127 55L132 39L120 20Z" fill="#263D43" opacity="0.78"/>
+      <path d="M119 20L104 39L109 54" fill="none" stroke="#EAB150" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M122 31L115 49L124 62L116 77L125 91L120 103" fill="none" stroke="#76C7C7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.82"/>
+      <path d="M84 99L107 96L120 105L133 96L156 99L165 109L155 118L132 113L126 120H114L108 113L85 118L75 109L84 99Z" fill="#4A392D" stroke="#06090C" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M83 102L107 99L120 108L133 99L157 102" fill="none" stroke="#E5A448" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+      <rect x="112" y="113" width="16" height="36" rx="7" fill="url(#stone-sword-leather)" stroke="#07090B" stroke-width="5"/>
+      <path d="M113 119L127 126M113 130L127 137M113 141L125 147" stroke="#E0A04A" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M120 145L134 153L129 164H111L106 153L120 145Z" fill="#404B4B" stroke="#06090C" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M112 154L120 149L128 154" fill="none" stroke="#76BFC0" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    <g fill="#F2A13B"><circle cx="42" cy="105" r="1.8"/><circle cx="53" cy="90" r="1.2"/><circle cx="187" cy="93" r="1.5"/></g>
+    <g fill="#F6AA41" filter="url(#stone-sword-glow)" opacity="0.75"><circle cx="42" cy="105" r="4"/><circle cx="187" cy="93" r="3"/></g>
+    <path d="M197 49L199 56L206 58L199 60L197 67L195 60L188 58L195 56Z" fill="#74C7C8" opacity="0.58"/>
+  </g>
+  <rect x="1.5" y="1.5" width="237" height="177" rx="16.5" fill="none" stroke="#35515C" stroke-width="3"/>
+</svg>

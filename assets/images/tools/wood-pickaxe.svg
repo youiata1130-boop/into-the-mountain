@@ -1,0 +1,58 @@
+<svg width="240" height="180" viewBox="0 0 240 180" role="img" aria-labelledby="wood-pickaxe-title wood-pickaxe-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="wood-pickaxe-title">Rugged wooden pickaxe</title>
+  <desc id="wood-pickaxe-desc">A gnarled wooden pickaxe bound with rope rises from a dark mountain cavern amid amber sparks and teal fog.</desc>
+  <defs>
+    <linearGradient id="wood-pickaxe-bg" x1="18" y1="7" x2="219" y2="178" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#172A3A"/>
+      <stop offset="0.53" stop-color="#09151E"/>
+      <stop offset="1" stop-color="#04080C"/>
+    </linearGradient>
+    <linearGradient id="wood-pickaxe-timber" x1="44" y1="59" x2="193" y2="104" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E1A14B"/>
+      <stop offset="0.18" stop-color="#9A5A2E"/>
+      <stop offset="0.62" stop-color="#523525"/>
+      <stop offset="1" stop-color="#173238"/>
+    </linearGradient>
+    <linearGradient id="wood-pickaxe-handle" x1="123" y1="72" x2="94" y2="165" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C67836"/>
+      <stop offset="0.52" stop-color="#6C4229"/>
+      <stop offset="1" stop-color="#2D2520"/>
+    </linearGradient>
+    <linearGradient id="wood-pickaxe-rope" x1="105" y1="61" x2="140" y2="94" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F1C16B"/>
+      <stop offset="1" stop-color="#764626"/>
+    </linearGradient>
+    <radialGradient id="wood-pickaxe-fire" cx="0" cy="0" r="1" gradientTransform="translate(44 130) rotate(-10) scale(89 65)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F09531" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#F09531" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="wood-pickaxe-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4"/></filter>
+    <filter id="wood-pickaxe-shadow" x="-35%" y="-30%" width="180%" height="190%"><feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity="0.8"/></filter>
+    <clipPath id="wood-pickaxe-frame"><rect width="240" height="180" rx="18"/></clipPath>
+  </defs>
+  <g clip-path="url(#wood-pickaxe-frame)">
+    <rect width="240" height="180" fill="url(#wood-pickaxe-bg)"/>
+    <ellipse cx="44" cy="130" rx="89" ry="65" fill="url(#wood-pickaxe-fire)"/>
+    <path d="M-3 76L29 47L51 68L81 28L112 66L142 39L171 69L205 29L243 68V119H-3V76Z" fill="#09151E"/>
+    <path d="M0 93L31 70L57 84L85 61L112 85L141 63L168 85L198 60L223 79L240 70V123H0V93Z" fill="#15313A" opacity="0.68"/>
+    <path d="M-8 111C26 101 54 110 86 104C116 99 147 105 177 98C203 92 226 98 248 105V126H-8V111Z" fill="#74BEC0" opacity="0.1"/>
+    <path d="M-5 141C32 123 72 131 111 121C155 110 203 120 245 134V180H-5V141Z" fill="#060E14"/>
+    <ellipse cx="119" cy="160" rx="66" ry="10" fill="#020406" opacity="0.8"/>
+    <g filter="url(#wood-pickaxe-shadow)">
+      <path d="M116 70L134 74L108 165L87 159L108 75L116 70Z" fill="url(#wood-pickaxe-handle)" stroke="#070A0C" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M112 79L127 82L106 151" fill="none" stroke="#E49A48" stroke-width="3" stroke-linecap="round" opacity="0.72"/>
+      <path d="M101 112L116 117M97 128L111 133M92 144L106 149" stroke="#38241D" stroke-width="4" stroke-linecap="round"/>
+      <path d="M39 84L58 66L84 58L108 64L120 57L135 65L158 57L182 65L203 83L178 82L157 91L136 85L120 95L104 84L81 90L58 87L39 84Z" fill="url(#wood-pickaxe-timber)" stroke="#06090B" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M41 83L60 68L84 60L107 66L120 60" fill="none" stroke="#F0B454" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+      <path d="M122 60L136 67L158 60L181 67L201 82" fill="none" stroke="#70BFC1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/>
+      <path d="M72 66L85 74L80 87M162 62L153 73L159 88" fill="none" stroke="#4C2D20" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M107 62L121 57L137 66L140 82L126 94L108 88L102 74L107 62Z" fill="#463025" stroke="#070A0C" stroke-width="4"/>
+      <path d="M105 65L138 83M103 73L134 91M111 60L140 76" stroke="url(#wood-pickaxe-rope)" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M109 64L137 79" fill="none" stroke="#F4D183" stroke-width="1.8" stroke-linecap="round" opacity="0.66"/>
+    </g>
+    <g fill="#F1A13B"><circle cx="40" cy="107" r="1.8"/><circle cx="52" cy="93" r="1.2"/><circle cx="199" cy="104" r="1.4"/></g>
+    <g fill="#F6AA41" filter="url(#wood-pickaxe-glow)" opacity="0.75"><circle cx="40" cy="107" r="4"/><circle cx="199" cy="104" r="3"/></g>
+    <path d="M205 47L207 54L214 56L207 58L205 65L203 58L196 56L203 54Z" fill="#75C7C9" opacity="0.55"/>
+  </g>
+  <rect x="1.5" y="1.5" width="237" height="177" rx="16.5" fill="none" stroke="#35525D" stroke-width="3"/>
+</svg>

@@ -1,0 +1,53 @@
+<svg width="240" height="180" viewBox="0 0 240 180" role="img" aria-labelledby="stone-pickaxe-title stone-pickaxe-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="stone-pickaxe-title">Stone mountain pickaxe</title>
+  <desc id="stone-pickaxe-desc">A jagged stone pickaxe with a leather-wrapped haft cuts across a deep cavern lit by amber sparks and cold teal mist.</desc>
+  <defs>
+    <linearGradient id="stone-pickaxe-bg" x1="17" y1="6" x2="220" y2="178" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#17293A"/>
+      <stop offset="0.52" stop-color="#09151F"/>
+      <stop offset="1" stop-color="#04080C"/>
+    </linearGradient>
+    <linearGradient id="stone-pickaxe-head" x1="45" y1="56" x2="190" y2="103" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E7A94B"/>
+      <stop offset="0.14" stop-color="#737B7C"/>
+      <stop offset="0.54" stop-color="#38444A"/>
+      <stop offset="1" stop-color="#15343A"/>
+    </linearGradient>
+    <linearGradient id="stone-pickaxe-handle" x1="128" y1="72" x2="84" y2="164" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B56A32"/>
+      <stop offset="0.5" stop-color="#674027"/>
+      <stop offset="1" stop-color="#2C2420"/>
+    </linearGradient>
+    <radialGradient id="stone-pickaxe-fire" cx="0" cy="0" r="1" gradientTransform="translate(43 129) rotate(-11) scale(88 64)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F09431" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#F09431" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="stone-pickaxe-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4"/></filter>
+    <filter id="stone-pickaxe-shadow" x="-30%" y="-30%" width="170%" height="180%"><feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity="0.8"/></filter>
+    <clipPath id="stone-pickaxe-frame"><rect width="240" height="180" rx="18"/></clipPath>
+  </defs>
+  <g clip-path="url(#stone-pickaxe-frame)">
+    <rect width="240" height="180" fill="url(#stone-pickaxe-bg)"/>
+    <ellipse cx="43" cy="129" rx="88" ry="64" fill="url(#stone-pickaxe-fire)"/>
+    <path d="M0 74L31 45L53 66L82 29L112 65L141 40L169 70L205 31L240 66V117H0V74Z" fill="#09151E"/>
+    <path d="M0 93L32 68L59 85L86 60L112 84L142 62L168 84L198 59L224 79L240 70V122H0V93Z" fill="#15313A" opacity="0.68"/>
+    <path d="M-8 111C24 101 48 109 80 104C114 98 142 105 173 98C201 91 225 98 248 105V126H-8V111Z" fill="#76BFC1" opacity="0.1"/>
+    <path d="M-5 141C29 123 73 130 111 120C156 109 203 119 245 133V180H-5V141Z" fill="#060E14"/>
+    <ellipse cx="117" cy="160" rx="66" ry="10" fill="#020406" opacity="0.8"/>
+    <g filter="url(#stone-pickaxe-shadow)">
+      <path d="M126 71L137 79L100 165L81 157L116 74L126 71Z" fill="url(#stone-pickaxe-handle)" stroke="#080A0C" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M119 79L129 83L101 151" fill="none" stroke="#DC8E42" stroke-width="3" stroke-linecap="round" opacity="0.72"/>
+      <path d="M101 111L116 118M94 126L109 133M88 141L103 148" stroke="#2C211D" stroke-width="4" stroke-linecap="round"/>
+      <path d="M39 85L55 66L88 55L121 62L150 55L184 65L204 84L178 82L154 90L132 85L116 94L94 84L70 89L39 85Z" fill="url(#stone-pickaxe-head)" stroke="#05090C" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M40 84L57 67L88 57L119 64" fill="none" stroke="#EAB253" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M121 64L151 57L182 66L202 83" fill="none" stroke="#75C2C4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+      <path d="M77 66L91 76L84 85M151 58L143 70L153 86" fill="none" stroke="#18262B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M117 62L133 64L140 80L127 94L112 90L106 74L117 62Z" fill="#242F34" stroke="#080C0F" stroke-width="4"/>
+      <path d="M116 66L130 67L135 78" fill="none" stroke="#8FC7C7" stroke-width="2" stroke-linecap="round" opacity="0.65"/>
+    </g>
+    <g fill="#F1A13B"><circle cx="39" cy="111" r="1.8"/><circle cx="50" cy="97" r="1.2"/><circle cx="194" cy="101" r="1.5"/></g>
+    <g fill="#F6AA41" filter="url(#stone-pickaxe-glow)" opacity="0.75"><circle cx="39" cy="111" r="4"/><circle cx="194" cy="101" r="3"/></g>
+    <path d="M204 48L206 55L213 57L206 59L204 66L202 59L195 57L202 55Z" fill="#75C7C9" opacity="0.55"/>
+  </g>
+  <rect x="1.5" y="1.5" width="237" height="177" rx="16.5" fill="none" stroke="#35525D" stroke-width="3"/>
+</svg>
