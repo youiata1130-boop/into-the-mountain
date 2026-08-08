@@ -29,7 +29,9 @@ jobs:
           test -f src/game/state.js
           test -f src/ui/app.js
           test -f src/ui/styles.css
-          test "$(find assets/images -type f -name '*.svg' | wc -l)" -eq 16
+          test -f assets/images/backgrounds/mountain-board-bg.png
+          test -f assets/images/resources/wood-tree.svg
+          test "$(find assets/images -type f -name '*.svg' | wc -l)" -ge 17
           node --check src/game/state.js
           node --check src/ui/app.js
 
