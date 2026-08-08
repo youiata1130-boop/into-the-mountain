@@ -1296,6 +1296,10 @@
     return taken;
   }
 
+  function addCardToHand(player, card) {
+    player.hand.push(window.IntoTheMountainState.prepareCardForHand(card));
+  }
+
   function addFieldCards(count) {
     var addCount = Math.min(count, state.shared.deck.length);
     var openedCards;
@@ -1558,7 +1562,7 @@
       return;
     }
 
-    activePlayer.hand.push(createdTool);
+    addCardToHand(activePlayer, createdTool);
     finishAction(activePlayer.name + " が " + toolName + "を作成しました。", createShortActionText(toolName, "作成"));
   }
 
@@ -1738,7 +1742,7 @@
 
     gainedWood = window.IntoTheMountainState.createResourceCard(createOwnedResourceId("W", "wood"), labels.resource.WOOD);
     state.nextResourceIds.wood += 1;
-    activePlayer.hand.push(gainedWood);
+    addCardToHand(activePlayer, gainedWood);
     finishAction(
       activePlayer.name + " が行動ポイントを2消費して木を1枚獲得しました。",
       createShortActionText(labels.resource.WOOD, "獲得")
@@ -1774,7 +1778,7 @@
         break;
       }
 
-      activePlayer.hand.push(gainedCard);
+      addCardToHand(activePlayer, gainedCard);
       gainedCount += 1;
     }
 

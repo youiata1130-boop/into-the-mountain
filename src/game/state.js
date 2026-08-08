@@ -66,6 +66,9 @@
   IMAGE_PATHS.resources[RESOURCE.STONE] = "assets/images/resources/stone.svg";
   IMAGE_PATHS.resources[RESOURCE.IRON] = "assets/images/resources/iron.svg";
 
+  var DECK_RESOURCE_IMAGE_PATHS = {};
+  DECK_RESOURCE_IMAGE_PATHS[RESOURCE.WOOD] = "assets/images/resources/wood-tree.svg";
+
   IMAGE_PATHS.tools[TOOL.WOOD_AXE] = "assets/images/tools/wood-axe.svg";
   IMAGE_PATHS.tools[TOOL.WOOD_PICKAXE] = "assets/images/tools/wood-pickaxe.svg";
   IMAGE_PATHS.tools[TOOL.STONE_PICKAXE] = "assets/images/tools/stone-pickaxe.svg";
@@ -94,6 +97,23 @@
 
   function createResourceCard(id, resourceType) {
     return createCard(id, CATEGORY.RESOURCE, resourceType, IMAGE_PATHS.resources[resourceType]);
+  }
+
+  function createDeckResourceCard(id, resourceType) {
+    return createCard(
+      id,
+      CATEGORY.RESOURCE,
+      resourceType,
+      DECK_RESOURCE_IMAGE_PATHS[resourceType] || IMAGE_PATHS.resources[resourceType]
+    );
+  }
+
+  function prepareCardForHand(card) {
+    if (card && card.category === CATEGORY.RESOURCE && card.name === RESOURCE.WOOD) {
+      card.imagePath = IMAGE_PATHS.resources[RESOURCE.WOOD];
+    }
+
+    return card;
   }
 
   function createToolCard(id, toolName) {
@@ -159,9 +179,9 @@
   }
 
   function createInitialDeck() {
-    return createCards("D-W-", createResourceCard, RESOURCE.WOOD, 40)
-      .concat(createCards("D-S-", createResourceCard, RESOURCE.STONE, 20))
-      .concat(createCards("D-I-", createResourceCard, RESOURCE.IRON, 10))
+    return createCards("D-W-", createDeckResourceCard, RESOURCE.WOOD, 40)
+      .concat(createCards("D-S-", createDeckResourceCard, RESOURCE.STONE, 20))
+      .concat(createCards("D-I-", createDeckResourceCard, RESOURCE.IRON, 10))
       .concat(createCards("D-P-", createPersonnelCard, PERSONNEL.LUMBERJACK, 1))
       .concat(createCards("D-PS-", createPersonnelCard, PERSONNEL.SWORDSMAN, 2))
       .concat(createCards("D-PG-", createPersonnelCard, PERSONNEL.SAGE, 1))
@@ -228,6 +248,7 @@
   window.IntoTheMountainState = {
     createInitialState: createInitialState,
     createResourceCard: createResourceCard,
+    prepareCardForHand: prepareCardForHand,
     createToolCard: createToolCard,
     createBuildingCard: createBuildingCard,
     createPersonnelCard: createPersonnelCard

@@ -1,11 +1,15 @@
 :root {
-  --bg: #efe2cc;
-  --panel: rgba(255, 249, 239, 0.92);
-  --line: #cfb694;
-  --ink: #2f2418;
-  --accent: #88522c;
-  --accent-strong: #5f3518;
-  --shadow: rgba(63, 39, 21, 0.16);
+  --bg: #071018;
+  --panel: rgba(8, 17, 24, 0.88);
+  --panel-soft: rgba(15, 28, 36, 0.82);
+  --line: rgba(204, 159, 89, 0.3);
+  --ink: #edf1eb;
+  --muted: #aebbb9;
+  --accent: #d6a45a;
+  --accent-strong: #f1c978;
+  --card-ink: #29251e;
+  --card-muted: #6a523d;
+  --shadow: rgba(0, 5, 10, 0.48);
 }
 
 * {
@@ -17,9 +21,15 @@ body {
   min-height: 100vh;
   color: var(--ink);
   font-family: "Yu Gothic UI", "Hiragino Sans", sans-serif;
-  background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.55), transparent 28%),
-    linear-gradient(180deg, #ccb08d 0%, var(--bg) 30%, #e6d4bc 100%);
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(180deg, rgba(3, 9, 14, 0.42) 0%, rgba(4, 12, 18, 0.18) 38%, rgba(2, 7, 11, 0.7) 100%),
+    radial-gradient(circle at 50% 45%, rgba(29, 62, 72, 0.08), rgba(2, 7, 11, 0.48) 82%),
+    url("../../assets/images/backgrounds/mountain-board-bg.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 body:has(.event-overlay:not([hidden])) {
@@ -52,7 +62,8 @@ body:has(.event-overlay:not([hidden])) {
   gap: 8px;
   padding: 6px;
   border-radius: 999px;
-  background: rgba(136, 82, 44, 0.12);
+  background: rgba(8, 17, 24, 0.62);
+  border: 1px solid rgba(214, 164, 90, 0.16);
 }
 
 .eyebrow {
@@ -73,6 +84,10 @@ p {
 h1 {
   margin-bottom: 6px;
   font-size: clamp(1.5rem, 3vw, 2.4rem);
+  color: #f6dfb2;
+  font-family: Georgia, "Yu Mincho", "Hiragino Mincho ProN", serif;
+  letter-spacing: 0.025em;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.72);
 }
 
 .lead {
@@ -80,16 +95,18 @@ h1 {
   line-height: 1.35;
   max-width: 34rem;
   font-size: 0.9rem;
+  color: #c8d0cb;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.82);
 }
 
 .status-panel,
 .player-area,
 .zone {
-  background: var(--panel);
-  border: 1px solid rgba(136, 82, 44, 0.15);
+  background: linear-gradient(180deg, rgba(14, 27, 35, 0.9), var(--panel));
+  border: 1px solid var(--line);
   border-radius: 24px;
   box-shadow: 0 12px 28px var(--shadow);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px) saturate(0.9);
 }
 
 .status-panel {
@@ -113,9 +130,13 @@ h1 {
   min-width: 160px;
   padding: 10px 12px;
   border-radius: 999px;
-  border: 1px solid rgba(136, 82, 44, 0.22);
-  background: rgba(255, 252, 246, 0.95);
+  border: 1px solid rgba(214, 164, 90, 0.3);
+  background: rgba(4, 12, 18, 0.78);
   color: var(--ink);
+}
+
+.match-input::placeholder {
+  color: #859696;
 }
 
 .status-top {
@@ -129,7 +150,8 @@ h1 {
   margin-bottom: 0;
   padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(136, 82, 44, 0.1);
+  background: rgba(214, 164, 90, 0.1);
+  border: 1px solid rgba(214, 164, 90, 0.18);
   color: var(--accent-strong);
   font-size: 0.9rem;
   font-weight: 700;
@@ -144,7 +166,7 @@ h1 {
 .action-log-panel {
   margin-top: 10px;
   padding-top: 10px;
-  border-top: 1px solid rgba(136, 82, 44, 0.16);
+  border-top: 1px solid rgba(214, 164, 90, 0.2);
 }
 
 .action-log-title {
@@ -165,8 +187,8 @@ h1 {
   margin-bottom: 0;
   padding: 8px 10px;
   border-radius: 14px;
-  background: rgba(136, 82, 44, 0.08);
-  color: var(--accent-strong);
+  background: rgba(105, 145, 150, 0.1);
+  color: #d3dcda;
   font-size: 0.86rem;
   line-height: 1.35;
 }
@@ -212,6 +234,8 @@ h1 {
 
 .board-opponent {
   padding: 8px 10px;
+  background: linear-gradient(180deg, rgba(21, 36, 44, 0.8), rgba(7, 16, 23, 0.86));
+  border-color: rgba(142, 172, 175, 0.18);
 }
 
 .board-opponent .zone {
@@ -272,6 +296,20 @@ h1 {
   font-size: clamp(1.35rem, 3.6vw, 1.9rem);
 }
 
+.board-self {
+  background:
+    linear-gradient(180deg, rgba(33, 48, 51, 0.94), rgba(8, 17, 23, 0.94));
+  border-color: rgba(232, 181, 96, 0.46);
+  box-shadow:
+    0 14px 34px rgba(0, 4, 8, 0.52),
+    inset 0 1px 0 rgba(255, 222, 164, 0.08),
+    0 0 24px rgba(197, 126, 45, 0.08);
+}
+
+.board-self .zone {
+  border-color: rgba(232, 181, 96, 0.32);
+}
+
 .country-panel {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -285,9 +323,9 @@ h1 {
   padding: 14px;
   border-radius: 24px;
   background:
-    linear-gradient(180deg, rgba(85, 58, 34, 0.92), rgba(54, 34, 19, 0.96)),
+    linear-gradient(180deg, rgba(29, 43, 48, 0.94), rgba(6, 14, 20, 0.97)),
     var(--panel);
-  border: 1px solid rgba(255, 243, 229, 0.12);
+  border: 1px solid rgba(214, 164, 90, 0.26);
   box-shadow: 0 12px 28px var(--shadow);
   color: #fff3e5;
 }
@@ -308,8 +346,8 @@ h1 {
 .country-stat {
   padding: 10px;
   border-radius: 14px;
-  background: rgba(255, 243, 229, 0.1);
-  border: 1px solid rgba(255, 243, 229, 0.14);
+  background: rgba(147, 178, 179, 0.09);
+  border: 1px solid rgba(194, 216, 211, 0.12);
 }
 
 .country-stat-health {
@@ -332,8 +370,8 @@ h1 {
   margin-top: 0;
   padding: 8px;
   border-radius: 14px;
-  background: rgba(255, 243, 229, 0.08);
-  border: 1px solid rgba(255, 243, 229, 0.14);
+  background: rgba(147, 178, 179, 0.07);
+  border: 1px solid rgba(194, 216, 211, 0.11);
 }
 
 .country-panel-personnel {
@@ -361,9 +399,9 @@ h1 {
   height: 30px;
   border-radius: 10px;
   overflow: hidden;
-  background: rgba(255, 252, 246, 0.92);
-  border: 1px solid rgba(255, 243, 229, 0.2);
-  box-shadow: 0 6px 14px rgba(28, 14, 8, 0.18);
+  background: rgba(224, 217, 197, 0.94);
+  border: 1px solid rgba(214, 164, 90, 0.26);
+  box-shadow: 0 6px 14px rgba(0, 5, 10, 0.36);
 }
 
 .equipment-icon-image {
@@ -474,7 +512,8 @@ h1 {
   gap: 8px;
   padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(136, 82, 44, 0.12);
+  background: rgba(214, 164, 90, 0.12);
+  border: 1px solid rgba(214, 164, 90, 0.2);
   color: var(--accent-strong);
   font-weight: 700;
 }
@@ -491,8 +530,8 @@ h1 {
   min-width: 0;
   padding: 8px 10px;
   border-radius: 14px;
-  background: rgba(136, 82, 44, 0.08);
-  border: 1px solid rgba(136, 82, 44, 0.14);
+  background: rgba(147, 178, 179, 0.07);
+  border: 1px solid rgba(194, 216, 211, 0.11);
 }
 
 .command-panel-build,
@@ -515,7 +554,7 @@ h1 {
 .command-panel-build.command-panel-empty::after {
   content: "建設できるものはありません";
   display: block;
-  color: #6a523d;
+  color: var(--muted);
   font-size: 0.9rem;
 }
 
@@ -528,9 +567,9 @@ h1 {
   padding: 10px 12px;
   border-radius: 16px;
   background:
-    linear-gradient(180deg, rgba(156, 93, 49, 0.14), rgba(255, 248, 238, 0.92));
-  border: 1px solid rgba(156, 93, 49, 0.22);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    linear-gradient(180deg, rgba(42, 76, 82, 0.34), rgba(7, 17, 23, 0.86));
+  border: 1px solid rgba(214, 164, 90, 0.22);
+  box-shadow: inset 0 1px 0 rgba(229, 237, 232, 0.08);
 }
 
 .command-group-label {
@@ -574,7 +613,7 @@ h1 {
 }
 
 .zone {
-  background: rgba(255, 252, 246, 0.95);
+  background: linear-gradient(180deg, rgba(22, 39, 47, 0.84), rgba(8, 18, 25, 0.9));
 }
 
 .zone-title-row {
@@ -639,6 +678,7 @@ h1 {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(238, 225, 204, 0.98));
   border: 1px solid rgba(120, 83, 50, 0.18);
+  color: var(--card-ink);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -647,8 +687,9 @@ h1 {
 .card-hidden,
 .stack-card-back {
   background:
-    linear-gradient(160deg, rgba(97, 55, 28, 0.96), rgba(53, 28, 13, 0.98));
+    linear-gradient(160deg, rgba(39, 61, 66, 0.98), rgba(8, 18, 24, 0.99));
   color: #fff3e5;
+  border-color: rgba(214, 164, 90, 0.3);
 }
 
 .card-title {
@@ -701,7 +742,11 @@ h1 {
   margin-bottom: 0;
   font-size: 1.1rem;
   font-weight: 800;
-  color: var(--accent-strong);
+  color: #714018;
+}
+
+.empty-text {
+  color: var(--muted);
 }
 
 .card-hidden .hand-summary-count {
@@ -781,17 +826,19 @@ h1 {
 
 .action-button {
   color: #fff;
-  background: linear-gradient(135deg, #9c5d31 0%, #6d3d1e 100%);
+  background: linear-gradient(135deg, #ae6d32 0%, #6f381b 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 231, 187, 0.2), 0 5px 14px rgba(0, 0, 0, 0.22);
 }
 
 .secondary-button {
-  color: var(--ink);
-  background: #ead6ba;
+  color: #eaf0ec;
+  background: rgba(118, 150, 154, 0.18);
+  border: 1px solid rgba(194, 216, 211, 0.14);
 }
 
 .secondary-button.mode-button-active {
   color: #fff;
-  background: linear-gradient(135deg, #9c5d31 0%, #6d3d1e 100%);
+  background: linear-gradient(135deg, #ae6d32 0%, #6f381b 100%);
 }
 
 .event-overlay {
@@ -800,7 +847,7 @@ h1 {
   display: grid;
   place-items: center;
   padding: 24px;
-  background: rgba(36, 21, 13, 0.62);
+  background: rgba(2, 7, 11, 0.76);
   backdrop-filter: blur(6px);
   z-index: 20;
 }
@@ -819,7 +866,7 @@ h1 {
   padding: 22px;
   border-radius: 28px;
   background:
-    linear-gradient(180deg, rgba(84, 45, 34, 0.98), rgba(51, 29, 19, 0.98));
+    linear-gradient(180deg, rgba(34, 48, 51, 0.99), rgba(8, 17, 23, 0.99));
   color: #fff4e7;
   border: 1px solid rgba(255, 238, 216, 0.18);
   box-shadow: 0 18px 48px rgba(28, 14, 8, 0.32);
@@ -1039,15 +1086,18 @@ h1 {
 
   .battlefield {
     min-height: 0;
-    grid-template-rows: minmax(0, 0.82fr) minmax(0, 0.7fr) minmax(0, 1.18fr);
+    grid-template-rows: minmax(0, 0.56fr) minmax(0, 0.76fr) minmax(0, 1.38fr);
     gap: 5px;
   }
 
-  .player-row,
-  .player-row-self {
+  .player-row {
     min-height: 0;
-    grid-template-columns: 188px minmax(0, 1fr);
+    grid-template-columns: 156px minmax(0, 1fr);
     gap: 5px;
+  }
+
+  .player-row-self {
+    grid-template-columns: 208px minmax(0, 1fr);
   }
 
   .country-panel,
@@ -1146,6 +1196,12 @@ h1 {
     border-radius: 4px;
   }
 
+  .player-row-self .equipment-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+  }
+
   .equipment-icon-image,
   .card-art {
     object-fit: contain;
@@ -1238,8 +1294,9 @@ h1 {
     margin-top: 3px;
     padding: 5px;
     border-radius: 10px;
-    background: rgba(255, 249, 239, 0.98);
-    box-shadow: 0 8px 20px rgba(63, 39, 21, 0.2);
+    background: rgba(10, 21, 28, 0.98);
+    border: 1px solid rgba(214, 164, 90, 0.28);
+    box-shadow: 0 8px 20px rgba(0, 5, 10, 0.46);
   }
 
   .contextual-action-panel {
@@ -1350,7 +1407,25 @@ h1 {
   }
 
   .board-opponent .hand-summary-card {
-    flex-basis: 112px;
+    flex: 0 1 68px;
+    width: 68px;
+    max-width: 76px;
+    opacity: 0.86;
+  }
+
+  .board-opponent .card-art,
+  .board-opponent .card-back-art {
+    max-height: 34px;
+  }
+
+  .board-self .hand-summary-card {
+    flex: 1 1 136px;
+    width: 136px;
+    max-width: 164px;
+  }
+
+  .board-self .card-art {
+    min-height: 72px;
   }
 
   .card-title {
