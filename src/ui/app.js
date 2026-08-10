@@ -945,19 +945,36 @@
   function createSummaryCardMarkup(summary, hidden, options) {
     var className;
     var attributes = "";
+    var countAttributes;
+    var isStacked;
 
     options = options || {};
+    isStacked = Boolean(options.stacked && summary.count > 1);
 
     if (hidden) {
+      className = "card card-hidden hand-summary-card";
+      if (isStacked) {
+        className += " hand-summary-card-stacked";
+        if (summary.count > 2) {
+          className += " hand-summary-card-stacked-many";
+        }
+      }
+
       return createCardMarkup(
         "非公開",
         '<div class="card-back-art" aria-hidden="true"></div>',
         '<p class="hand-summary-count" aria-label="' + summary.count + '枚">×' + summary.count + "</p>",
-        "card card-hidden hand-summary-card"
+        className
       );
     }
 
     className = "card hand-summary-card";
+    if (isStacked) {
+      className += " hand-summary-card-stacked";
+      if (summary.count > 2) {
+        className += " hand-summary-card-stacked-many";
+      }
+    }
     if (options.selectable) {
       className += " hand-summary-card-selectable";
       attributes += ' data-selection-key="' + escapeHtml(createCardSelectionKey(summary.category, summary.name)) + '"';
@@ -969,9 +986,13 @@
     if (options.selectable) {
       attributes += ' aria-expanded="' + (options.selected ? "true" : "false") + '"';
       attributes += ' aria-label="' + escapeHtml(
-        summary.name + " " + summary.count + "枚、行動を" + (options.selected ? "閉じる" : "開く")
+        summary.name + "、" + (isStacked ? summary.count + "枚の束" : summary.count + "枚") + "。行動を" +
+        (options.selected ? "閉じる" : "開く")
       ) + '"';
     }
+    countAttributes = options.selectable
+      ? ' aria-hidden="true"'
+      : ' aria-label="' + summary.count + '枚"';
 
     return [
       '<article class="' + className + '"' + attributes + '>',
@@ -980,7 +1001,7 @@
       '<span class="card-name">' + escapeHtml(summary.name) + "</span>",
       "</p>",
       '<img class="card-art" src="' + escapeHtml(summary.imagePath) + '" alt="' + escapeHtml(summary.name) + '">',
-      '<p class="hand-summary-count" aria-label="' + summary.count + '枚">×' + summary.count + "</p>",
+      '<p class="hand-summary-count"' + countAttributes + '>×' + summary.count + "</p>",
       "</article>"
     ].join("");
   }
@@ -1087,10 +1108,11 @@
     });
   }
 
-  function renderSummaryList(container, cards, hidden, selectable, selectedKey) {
+  function renderSummaryList(container, cards, hidden, selectable, selectedKey, stacked) {
     var summaries;
 
     selectable = Boolean(selectable);
+    stacked = Boolean(stacked);
 
     if (cards.length === 0) {
       renderEmpty(container, "カードがありません");
@@ -1098,7 +1120,7 @@
     }
 
     if (hidden) {
-      setHtml(container, createSummaryCardMarkup({ count: cards.length }, true));
+      setHtml(container, createSummaryCardMarkup({ count: cards.length }, true, { stacked: stacked }));
       return;
     }
 
@@ -1107,7 +1129,8 @@
     setHtml(container, summaries.map(function (summary) {
       return createSummaryCardMarkup(summary, false, {
         selectable: selectable,
-        selected: selectable && createCardSelectionKey(summary.category, summary.name) === selectedKey
+        selected: selectable && createCardSelectionKey(summary.category, summary.name) === selectedKey,
+        stacked: stacked
       });
     }).join(""));
   }
@@ -1466,10 +1489,10 @@
 
     syncSelectedHandCard();
     syncSelectedFieldCard();
-    renderSummaryList(dom["opponent-hand"], opponentPlayer.hand, true, false, "");
-    renderSummaryList(dom["self-hand"], selfPlayer.hand, false, canControlLocalTurn(), selectedHandCardKey);
+    renderSummaryList(dom["opponent-hand"], opponentPlayer.hand, true, false, "", true);
+    renderSummaryList(dom["self-hand"], selfPlayer.hand, false, canControlLocalTurn(), selectedHandCardKey, true);
     renderDeck(state.shared.deck);
-    renderSummaryList(dom["shared-field"], state.shared.field, false, canControlLocalTurn(), selectedFieldCardKey);
+    renderSummaryList(dom["shared-field"], state.shared.field, false, canControlLocalTurn(), selectedFieldCardKey, false);
     renderDiscard(state.shared.discard);
     renderCount(dom["opponent-hand-count"], opponentPlayer.hand.length);
     renderCount(dom["self-hand-count"], selfPlayer.hand.length);

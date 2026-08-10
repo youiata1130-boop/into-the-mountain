@@ -3084,3 +3084,106 @@ h3 {
     transition: none;
   }
 }
+
+/* Grouped hand cards fan to the right without consuming vertical board space. */
+.game-active .hand-summary-card-stacked {
+  isolation: isolate;
+  overflow: visible;
+  margin-right: 12px;
+}
+
+.game-active .hand-summary-card-stacked::before,
+.game-active .hand-summary-card-stacked::after {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.game-active .hand-summary-card-stacked::before {
+  display: none;
+  inset: 6px -12px 6px 12px;
+  z-index: -2;
+  border: 1px solid rgba(194, 126, 68, 0.66);
+  background: linear-gradient(180deg, #e4ad6d, #d79558);
+  box-shadow: 2px 3px 7px rgba(91, 65, 41, 0.18);
+}
+
+.game-active .hand-summary-card-stacked::after {
+  inset: 3px -6px 3px 6px;
+  z-index: -1;
+  border: 1px solid rgba(221, 158, 83, 0.76);
+  background: linear-gradient(180deg, #fff0c4, #edc784);
+  box-shadow: 2px 3px 7px rgba(91, 65, 41, 0.16);
+}
+
+.game-active .hand-summary-card-stacked-many::before {
+  display: block;
+}
+
+.game-active .card-hidden.hand-summary-card-stacked::before {
+  border-color: rgba(38, 103, 104, 0.88);
+  background: linear-gradient(180deg, #438b8d, #2f7377);
+  box-shadow: 2px 3px 7px rgba(24, 71, 73, 0.24);
+}
+
+.game-active .card-hidden.hand-summary-card-stacked::after {
+  border-color: rgba(91, 164, 157, 0.92);
+  background: linear-gradient(180deg, #a3d7ca, #6fb5ad);
+  box-shadow: 2px 3px 7px rgba(25, 75, 74, 0.2);
+}
+
+.game-active .hand-summary-card .hand-summary-count {
+  z-index: 3;
+  min-width: 34px;
+  padding: 4px 7px;
+  font-size: 0.8rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+}
+
+.game-active .board-self .hand-summary-card .hand-summary-count {
+  min-width: 40px;
+  padding: 5px 9px;
+  font-size: 0.94rem;
+}
+
+.game-active .hand-summary-card-stacked .hand-summary-count {
+  right: 8px;
+  bottom: 8px;
+}
+
+.game-active .board-opponent .hand-summary-card .hand-summary-count {
+  right: 4px;
+  bottom: 4px;
+  min-width: 28px;
+  padding: 3px 5px;
+  font-size: 0.7rem;
+}
+
+.game-active .board-opponent .hand-summary-card-stacked .hand-summary-count {
+  right: 5px;
+  bottom: 5px;
+}
+
+@media (max-width: 900px) {
+  .game-active .board-self .hand-summary-card .hand-summary-count {
+    min-width: 36px;
+    padding: 4px 7px;
+    font-size: 0.88rem;
+  }
+}
+
+@media (forced-colors: active) {
+  .game-active .hand-summary-card-stacked::before,
+  .game-active .hand-summary-card-stacked::after {
+    border-color: CanvasText;
+  }
+
+  .game-active .hand-summary-card .hand-summary-count {
+    border-color: ButtonText;
+  }
+}
