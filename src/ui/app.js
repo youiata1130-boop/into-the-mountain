@@ -19,8 +19,14 @@
 
   function cacheDom() {
     [
+      "start-screen",
+      "game-screen",
       "start-button",
       "reset-button",
+      "launch-mode-local-button",
+      "launch-mode-cpu-button",
+      "launch-mode-status",
+      "start-match-details",
       "mode-local-button",
       "mode-cpu-button",
       "gather-wood-button",
@@ -215,6 +221,10 @@
 
   function setPlayMode(nextMode) {
     if (nextMode !== "local" && nextMode !== "cpu") {
+      return;
+    }
+
+    if (state.started || state.winner || isMatched()) {
       return;
     }
 
@@ -1032,11 +1042,36 @@
   }
 
   function renderPlayMode() {
-    dom["play-mode-status"].textContent = isCpuMode() ? "CPU対戦" : "ローカル対戦";
-    dom["mode-local-button"].classList.toggle("mode-button-active", !isCpuMode());
-    dom["mode-cpu-button"].classList.toggle("mode-button-active", isCpuMode());
-    dom["mode-local-button"].disabled = isMatched();
-    dom["mode-cpu-button"].disabled = isMatched();
+    var cpuMode = isCpuMode();
+    var modeLocked = state.started || Boolean(state.winner) || isMatched();
+
+    dom["play-mode-status"].textContent = cpuMode ? "CPU戦" : "対人戦";
+    dom["mode-local-button"].classList.toggle("mode-button-active", !cpuMode);
+    dom["mode-cpu-button"].classList.toggle("mode-button-active", cpuMode);
+    dom["mode-local-button"].setAttribute("aria-pressed", cpuMode ? "false" : "true");
+    dom["mode-cpu-button"].setAttribute("aria-pressed", cpuMode ? "true" : "false");
+    dom["mode-local-button"].disabled = modeLocked;
+    dom["mode-cpu-button"].disabled = modeLocked;
+
+    dom["launch-mode-local-button"].classList.toggle("start-mode-card-selected", !cpuMode);
+    dom["launch-mode-cpu-button"].classList.toggle("start-mode-card-selected", cpuMode);
+    dom["launch-mode-local-button"].setAttribute("aria-pressed", cpuMode ? "false" : "true");
+    dom["launch-mode-cpu-button"].setAttribute("aria-pressed", cpuMode ? "true" : "false");
+    dom["launch-mode-local-button"].disabled = modeLocked;
+    dom["launch-mode-cpu-button"].disabled = modeLocked;
+    dom["launch-mode-status"].textContent = cpuMode ? "CPU戦を選択中" : "対人戦を選択中";
+    dom["start-button"].textContent = cpuMode ? "CPU戦を開始" : "対人戦を開始";
+    dom["start-match-details"].hidden = cpuMode;
+  }
+
+  function renderScreenState() {
+    var gameActive = state.started || Boolean(state.winner);
+
+    document.body.classList.toggle("game-active", gameActive);
+    dom["start-screen"].hidden = gameActive;
+    dom["start-screen"].setAttribute("aria-hidden", gameActive ? "true" : "false");
+    dom["game-screen"].hidden = !gameActive;
+    dom["game-screen"].setAttribute("aria-hidden", gameActive ? "false" : "true");
   }
 
   function showEventOverlay(title, imagePath, message) {
@@ -1238,6 +1273,7 @@
     renderStatus();
     renderActionLog();
     renderPlayMode();
+    renderScreenState();
     renderCountries();
     renderActionButtons();
     if (isMatched()) {
@@ -2106,6 +2142,12 @@
       setPlayMode("local");
     });
     dom["mode-cpu-button"].addEventListener("click", function () {
+      setPlayMode("cpu");
+    });
+    dom["launch-mode-local-button"].addEventListener("click", function () {
+      setPlayMode("local");
+    });
+    dom["launch-mode-cpu-button"].addEventListener("click", function () {
       setPlayMode("cpu");
     });
     dom["create-match-button"].addEventListener("click", createMatch);

@@ -551,14 +551,14 @@ h1 {
   margin-top: 8px;
 }
 
-.command-panel-build.command-panel-empty::after {
+.game-active .command-panel-build.command-panel-empty::after {
   content: "建設できるものはありません";
   display: block;
   color: var(--muted);
   font-size: 0.9rem;
 }
 
-.command-panel-build.command-panel-empty {
+.game-active .command-panel-build.command-panel-empty {
   display: block;
 }
 
@@ -1533,5 +1533,386 @@ h1 {
     padding: 3px 6px;
     font-size: 0.58rem;
     line-height: 1;
+  }
+}
+
+/* Launch screen and streamlined in-game shell. */
+.start-screen[hidden],
+.game-screen[hidden],
+.start-match-details[hidden] {
+  display: none !important;
+}
+
+.start-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+  padding: clamp(18px, 4vw, 44px);
+  overflow-y: auto;
+  background:
+    linear-gradient(180deg, rgba(2, 8, 13, 0.42), rgba(2, 8, 13, 0.82)),
+    radial-gradient(circle at 50% 24%, rgba(80, 127, 135, 0.2), transparent 44%),
+    url("../../assets/images/backgrounds/mountain-board-bg.png") center / cover no-repeat;
+}
+
+.start-screen-panel {
+  position: relative;
+  width: min(820px, 100%);
+  padding: clamp(24px, 5vw, 46px);
+  overflow: hidden;
+  border: 1px solid rgba(232, 181, 96, 0.36);
+  border-radius: 32px;
+  background:
+    linear-gradient(145deg, rgba(20, 37, 44, 0.91), rgba(5, 13, 19, 0.95));
+  box-shadow:
+    0 32px 80px rgba(0, 4, 8, 0.7),
+    inset 0 1px 0 rgba(255, 229, 180, 0.08);
+  backdrop-filter: blur(16px) saturate(0.86);
+  text-align: center;
+}
+
+.start-screen-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 12%;
+  width: 76%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(240, 190, 106, 0.9), transparent);
+}
+
+.start-screen .eyebrow {
+  margin-bottom: 10px;
+  color: #d9ad69;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+}
+
+#start-screen-title {
+  margin-bottom: 8px;
+  font-size: clamp(2.6rem, 7vw, 5.2rem);
+  line-height: 0.96;
+  letter-spacing: 0.04em;
+}
+
+.start-screen-lead {
+  max-width: 34rem;
+  margin: 0 auto clamp(20px, 4vh, 34px);
+  color: #c8d2ce;
+  font-size: clamp(0.88rem, 1.6vw, 1.02rem);
+  line-height: 1.7;
+}
+
+.start-mode-selector {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.start-mode-card {
+  position: relative;
+  min-height: 148px;
+  padding: 22px;
+  overflow: hidden;
+  color: #e9efeb;
+  text-align: left;
+  cursor: pointer;
+  border: 1px solid rgba(165, 193, 192, 0.18);
+  border-radius: 20px;
+  background:
+    linear-gradient(145deg, rgba(54, 83, 87, 0.28), rgba(7, 18, 25, 0.84));
+  box-shadow: inset 0 1px 0 rgba(235, 244, 238, 0.06);
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.start-screen:not([hidden]) .start-mode-card::after {
+  content: "VS";
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  color: rgba(178, 208, 205, 0.16);
+  font-family: Georgia, serif;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.08em;
+}
+
+.start-screen:not([hidden]) .start-mode-card:nth-child(2)::after {
+  content: "AI";
+}
+
+.start-mode-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(232, 181, 96, 0.46);
+}
+
+.start-mode-card:focus-visible {
+  outline: 3px solid rgba(244, 201, 124, 0.5);
+  outline-offset: 3px;
+}
+
+.start-mode-card-selected {
+  transform: translateY(-3px);
+  border-color: rgba(242, 194, 109, 0.9);
+  background:
+    radial-gradient(circle at 90% 12%, rgba(207, 139, 52, 0.2), transparent 42%),
+    linear-gradient(145deg, rgba(77, 91, 82, 0.46), rgba(10, 23, 29, 0.94));
+  box-shadow:
+    0 14px 34px rgba(0, 4, 8, 0.4),
+    inset 0 0 0 1px rgba(255, 221, 158, 0.2);
+}
+
+.start-mode-title,
+.start-mode-description {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+.start-mode-title {
+  margin-top: 38px;
+  color: #f4d79f;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  font-weight: 800;
+}
+
+.start-mode-description {
+  margin-top: 7px;
+  color: #afbfbd;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.start-mode-status {
+  margin: 14px 0 10px;
+  color: var(--accent-strong);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.start-game-button {
+  width: min(360px, 100%);
+  min-height: 48px;
+  padding: 12px 24px;
+  font-size: 0.98rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.start-match-details {
+  width: min(620px, 100%);
+  margin: 14px auto 0;
+  color: var(--muted);
+  text-align: left;
+}
+
+.start-match-details > summary {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: #aebcba;
+  font-size: 0.76rem;
+  text-align: center;
+}
+
+.start-match-details > summary:hover {
+  color: #f0c777;
+}
+
+.start-match-details .match-panel {
+  margin: 10px 0 0;
+  padding: 10px;
+  border-radius: 16px;
+  background: rgba(4, 13, 19, 0.72);
+  box-shadow: none;
+}
+
+.start-match-details .match-row {
+  justify-content: center;
+}
+
+.match-input-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.game-active .hero {
+  align-items: center;
+}
+
+.game-active .hero .eyebrow,
+.game-active .hero .lead,
+.game-active .mode-switch {
+  display: none;
+}
+
+.game-active .hero h1 {
+  font-size: clamp(1.08rem, 2.2vw, 1.45rem);
+}
+
+.game-active .hero-actions {
+  margin-left: auto;
+}
+
+.game-active #reset-button {
+  color: #c9d4d0;
+  background: rgba(109, 142, 147, 0.1);
+}
+
+.game-active .status-top .status-chip:last-child {
+  display: none;
+}
+
+.game-active .player-area > .zone {
+  background: rgba(7, 17, 24, 0.48);
+  border-color: rgba(203, 174, 120, 0.14);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.game-active .action-log-list .action-log-item:not(:first-child) {
+  display: none;
+}
+
+@media (min-width: 901px) and (min-height: 650px) {
+  .game-screen {
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+  }
+
+  .game-active .battlefield {
+    grid-template-rows: minmax(0, 0.48fr) minmax(0, 0.72fr) minmax(0, 1.55fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .start-screen {
+    background-attachment: scroll;
+  }
+
+  .country-panel,
+  .player-row:first-child .country-panel,
+  .player-row-self .country-panel {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-areas:
+      "title title title"
+      "health attack defense"
+      "personnel equipment buildings";
+    gap: 5px;
+    padding: 8px;
+  }
+
+  .board {
+    grid-template-columns: 76px minmax(0, 1fr) 68px;
+    gap: 6px;
+  }
+
+  .board-center {
+    align-items: stretch;
+  }
+
+  .board-center > .zone {
+    min-width: 0;
+    padding: 7px;
+  }
+
+  .card-list,
+  .card-list-hand,
+  .board-field .card-list,
+  .board-opponent .card-list-hand {
+    display: flex;
+    justify-content: flex-start;
+    gap: 7px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+  }
+
+  .hand-summary-card,
+  .board-field .hand-summary-card,
+  .board-self .hand-summary-card {
+    flex: 0 0 132px;
+    width: 132px;
+    scroll-snap-align: start;
+  }
+
+  .board-opponent .hand-summary-card {
+    flex: 0 0 58px;
+    width: 58px;
+    min-height: 88px;
+  }
+}
+
+@media (max-width: 620px) {
+  .start-screen {
+    place-items: start center;
+    padding: 12px;
+  }
+
+  .start-screen-panel {
+    padding: 24px 16px;
+    border-radius: 24px;
+  }
+
+  #start-screen-title {
+    font-size: clamp(2.35rem, 13vw, 3.7rem);
+  }
+
+  .start-mode-selector {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .start-mode-card {
+    min-height: 112px;
+    padding: 15px 18px;
+  }
+
+  .start-mode-title {
+    margin-top: 24px;
+  }
+
+  .start-match-details .match-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  .start-match-details .match-row .action-button:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .start-match-details .match-input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .game-active .zone-title-row {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .game-active .turn-command-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .game-active .turn-command-row button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .start-mode-card {
+    transition: none;
   }
 }

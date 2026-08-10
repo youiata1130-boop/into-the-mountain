@@ -8,20 +8,69 @@
   <link rel="stylesheet" href="src/ui/styles.css">
 </head>
 <body>
-  <main class="app">
+  <section id="start-screen" class="start-screen" aria-labelledby="start-screen-title">
+    <div class="start-screen-panel">
+      <p class="eyebrow">Mountain Strategy Game</p>
+      <h1 id="start-screen-title">Into the Mountain</h1>
+      <p class="start-screen-lead">山の恵みを集め、国を築き、対戦相手より先に勝利をつかめ。</p>
+
+      <div class="start-mode-selector" aria-label="対戦モードを選択">
+        <button
+          id="launch-mode-local-button"
+          class="start-mode-card start-mode-card-selected"
+          type="button"
+          aria-pressed="true"
+          aria-describedby="launch-mode-local-description"
+        >
+          <span class="start-mode-title">対人戦</span>
+          <span id="launch-mode-local-description" class="start-mode-description">1台の端末で手番を交代して遊ぶ</span>
+        </button>
+        <button
+          id="launch-mode-cpu-button"
+          class="start-mode-card"
+          type="button"
+          aria-pressed="false"
+          aria-describedby="launch-mode-cpu-description"
+        >
+          <span class="start-mode-title">CPU戦</span>
+          <span id="launch-mode-cpu-description" class="start-mode-description">ひとりでCPUを相手に遊ぶ</span>
+        </button>
+      </div>
+
+      <p id="launch-mode-status" class="start-mode-status" aria-live="polite">対人戦を選択中</p>
+      <button id="start-button" class="action-button start-game-button" type="button" aria-controls="game-screen">
+        対人戦を開始
+      </button>
+
+      <details id="start-match-details" class="start-match-details">
+        <summary>別ウィンドウで対人戦をする</summary>
+        <section id="match-panel" class="status-panel match-panel" aria-label="対戦部屋">
+          <div class="match-row">
+            <button id="create-match-button" class="action-button" type="button">部屋を作成</button>
+            <label class="match-input-label" for="room-code-input">部屋コード</label>
+            <input id="room-code-input" class="match-input" type="text" maxlength="8" placeholder="部屋コード" autocomplete="off">
+            <button id="join-match-button" class="secondary-button" type="button">参加</button>
+          </div>
+          <p class="status-chip">部屋コード <span id="room-code-display">未作成</span></p>
+          <p id="room-status" class="status-text" aria-live="polite">部屋を作成し、同じブラウザの別ウィンドウから同じコードで参加してください。</p>
+        </section>
+      </details>
+    </div>
+  </section>
+
+  <main id="game-screen" class="app game-screen" hidden>
     <header class="hero">
       <div>
-        <p class="eyebrow">Web Board Game</p>
+        <p class="eyebrow">Mountain Strategy Game</p>
         <h1>Into the Mountain</h1>
-        <p class="lead">木・石・鉄を集めて道具や建物を整え、売却・雇用・攻撃で勝利を目指す対戦ボードゲームです。</p>
+        <p class="lead">資源を集め、国を築き、山の覇者を目指せ。</p>
       </div>
       <div class="hero-actions">
-        <div class="mode-switch" aria-label="play-mode">
-          <button id="mode-local-button" class="secondary-button" type="button">ローカル対戦</button>
-          <button id="mode-cpu-button" class="secondary-button" type="button">CPU対戦</button>
+        <div class="mode-switch" aria-label="現在の対戦モード">
+          <button id="mode-local-button" class="secondary-button" type="button" aria-pressed="true">対人戦</button>
+          <button id="mode-cpu-button" class="secondary-button" type="button" aria-pressed="false">CPU戦</button>
         </div>
-        <button id="start-button" class="action-button" type="button">ゲーム開始</button>
-        <button id="reset-button" class="secondary-button" type="button">初期状態に戻す</button>
+        <button id="reset-button" class="secondary-button" type="button" aria-controls="start-screen">タイトルへ戻る</button>
       </div>
     </header>
 
@@ -32,16 +81,6 @@
         <p class="status-chip">対戦モード <span id="play-mode-status">ローカル対戦</span></p>
       </div>
       <p id="status-text" class="status-text"></p>
-    </section>
-
-    <section class="status-panel match-panel">
-      <div class="match-row">
-        <button id="create-match-button" class="action-button" type="button">部屋を作成</button>
-        <input id="room-code-input" class="match-input" type="text" maxlength="8" placeholder="部屋コード">
-        <button id="join-match-button" class="secondary-button" type="button">参加</button>
-      </div>
-      <p class="status-chip">部屋コード <span id="room-code-display">未作成</span></p>
-      <p id="room-status" class="status-text">部屋を作成し、同じブラウザの別ウィンドウから同じコードで参加してください。</p>
     </section>
 
     <section class="battlefield" aria-label="game-board">
