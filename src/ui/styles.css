@@ -3395,6 +3395,99 @@ h3 {
   background: #714d2e;
 }
 
+/* Readable game copy: preserve display and section-heading sizes. */
+.game-active .hand-summary-card .card-title {
+  font-size: 0.72rem;
+}
+
+.game-active .hand-summary-card[data-card-category] .card-category {
+  font-size: 0.62rem;
+}
+
+.game-active .hand-summary-card[data-card-category] .card-category-mark {
+  font-size: 0.64rem;
+}
+
+.game-active .hand-summary-card .hand-summary-count {
+  font-size: 0.86rem;
+}
+
+.game-active .board-self .hand-summary-card .hand-summary-count {
+  font-size: 0.98rem;
+}
+
+.game-active .board-opponent .hand-summary-card .hand-summary-count {
+  font-size: 0.74rem;
+}
+
+.game-active .contextual-action-popover .contextual-action-hint {
+  font-size: 0.84rem;
+}
+
+@media (min-width: 901px) and (min-height: 650px) {
+  .game-active .action-button,
+  .game-active .secondary-button {
+    font-size: 0.78rem;
+  }
+
+  .game-active .status-chip {
+    font-size: 0.74rem;
+  }
+
+  .game-active .status-text {
+    font-size: 0.76rem;
+  }
+
+  .game-active .country-stat-label {
+    font-size: 0.62rem;
+  }
+
+  .game-active .country-stat-value,
+  .game-active .country-stat-value-small,
+  .game-active .player-row:first-child .country-stat-value,
+  .game-active .player-row-self .country-stat-value {
+    font-size: 1rem;
+  }
+
+  .game-active .wallet-chip {
+    font-size: 0.74rem;
+  }
+
+  .game-active .zone-count {
+    font-size: 0.7rem;
+  }
+
+  .game-active .deck-breakdown-item {
+    padding-inline: 3px;
+    font-size: 0.62rem;
+  }
+
+  .game-active .country-card-self .equipment-list .empty-text,
+  .game-active .player-area .hand-zone .empty-text,
+  .game-active .board-center .empty-text,
+  .game-active .action-log-list .empty-text {
+    font-size: 0.66rem;
+  }
+
+  .game-active .equipment-icon-power {
+    font-size: 0.52rem;
+  }
+
+  .game-active .equipment-icon-count {
+    font-size: 0.48rem;
+  }
+
+  .game-active .action-log-item {
+    font-size: 0.66rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .game-active .board-self .hand-summary-card .hand-summary-count {
+    font-size: 0.94rem;
+  }
+}
+
 @media (forced-colors: active) {
   .game-active .hand-summary-card-stacked::before,
   .game-active .hand-summary-card-stacked::after {
