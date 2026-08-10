@@ -122,15 +122,14 @@
         </aside>
 
         <article class="player-area board-opponent">
-          <div class="area-header">
-            <p id="opponent-player-label" class="area-label">待機プレイヤー</p>
-            <h2 id="opponent-player-title">相手プレイヤーの手札</h2>
-          </div>
-          <section class="zone">
-            <div class="zone-title-row">
-              <h3>手札</h3>
-              <span id="opponent-hand-count" class="zone-count"></span>
+          <div class="area-header area-header-hand">
+            <div>
+              <p id="opponent-player-label" class="area-label">待機プレイヤー</p>
+              <h2 id="opponent-player-title">相手プレイヤー</h2>
             </div>
+            <span id="opponent-hand-count" class="zone-count hand-count-chip"></span>
+          </div>
+          <section class="zone hand-zone" aria-label="相手の手札">
             <div id="opponent-hand" class="card-list card-list-hand"></div>
           </section>
         </article>
@@ -206,6 +205,7 @@
               <div class="player-hand-header">
                 <h2 id="self-player-title" class="player-hand-title">手番プレイヤー</h2>
                 <p class="wallet-chip"><span id="wallet-label">所持金</span> <strong id="self-gold">0</strong> G</p>
+                <span id="self-hand-count" class="zone-count hand-count-chip"></span>
               </div>
               <section class="turn-command-row">
                 <div class="command-group">
@@ -245,11 +245,7 @@
               <button id="hire-sage-button" class="action-button" type="button">賢者を雇用 (6G)</button>
             </div>
           </section>
-          <section class="zone">
-            <div class="zone-title-row">
-              <h3>手札</h3>
-              <span id="self-hand-count" class="zone-count"></span>
-            </div>
+          <section class="zone hand-zone" aria-label="自分の手札">
             <div id="self-hand" class="card-list card-list-hand"></div>
           </section>
         </article>

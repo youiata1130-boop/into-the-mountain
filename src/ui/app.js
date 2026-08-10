@@ -741,9 +741,9 @@
 
     if (hidden) {
       return createCardMarkup(
-        "手札の概要",
+        "非公開",
         '<div class="card-back-art" aria-hidden="true"></div>',
-        '<p class="hand-summary-count">x ' + summary.count + "</p>",
+        '<p class="hand-summary-count" aria-label="' + summary.count + '枚">×' + summary.count + "</p>",
         "card card-hidden hand-summary-card"
       );
     }
@@ -759,9 +759,12 @@
 
     return [
       '<article class="' + className + '"' + attributes + '>',
-      '<p class="card-title">' + escapeHtml(summary.category) + " | " + escapeHtml(summary.name) + "</p>",
+      '<p class="card-title">',
+      '<span class="card-category">' + escapeHtml(summary.category) + "</span>",
+      '<span class="card-name">' + escapeHtml(summary.name) + "</span>",
+      "</p>",
       '<img class="card-art" src="' + escapeHtml(summary.imagePath) + '" alt="' + escapeHtml(summary.name) + '">',
-      '<p class="hand-summary-count">x ' + summary.count + "</p>",
+      '<p class="hand-summary-count" aria-label="' + summary.count + '枚">×' + summary.count + "</p>",
       "</article>"
     ].join("");
   }
@@ -995,11 +998,8 @@
     ]);
 
     setHtml(dom["shared-deck"], [
-      '<div class="stack-card stack-card-back">',
-      '<p class="card-title">山札</p>',
+      '<div class="stack-card stack-card-back" aria-label="山札 ' + cards.length + '枚">',
       '<div class="card-back-art" aria-hidden="true"></div>',
-      '<p class="stack-total">' + cards.length + "</p>",
-      '<p class="stack-count">残り枚数</p>',
       '<div class="deck-breakdown">',
       '<span class="deck-breakdown-item">木 ' + resourceCounts[labels.resource.WOOD] + "</span>",
       '<span class="deck-breakdown-item">石 ' + resourceCounts[labels.resource.STONE] + "</span>",
@@ -1011,11 +1011,8 @@
 
   function renderDiscard(cards) {
     setHtml(dom["shared-discard"], [
-      '<div class="stack-card discard-stack">',
-      '<p class="card-title">捨て札</p>',
+      '<div class="stack-card discard-stack" aria-label="捨て札 ' + cards.length + '枚">',
       '<div class="discard-stack-art" aria-hidden="true"></div>',
-      '<p class="stack-total">' + cards.length + "</p>",
-      '<p class="stack-count">枚数のみ表示</p>',
       "</div>"
     ].join(""));
   }
@@ -1101,10 +1098,10 @@
   }
 
   function renderPlayerAreaTexts(selfPlayer, opponentPlayer) {
-    dom["self-player-label"].textContent = isCpuMode() && !isMatched() ? "あなたの手札" : "手番プレイヤー";
+    dom["self-player-label"].textContent = isCpuMode() && !isMatched() ? "あなた" : "手番";
     dom["self-player-title"].textContent = selfPlayer.name;
-    dom["opponent-player-label"].textContent = isCpuMode() && !isMatched() ? "CPUの手札" : "待機プレイヤー";
-    dom["opponent-player-title"].textContent = opponentPlayer.name + " の手札";
+    dom["opponent-player-label"].textContent = isCpuMode() && !isMatched() ? "対戦相手" : "待機";
+    dom["opponent-player-title"].textContent = opponentPlayer.name;
     dom["wallet-label"].textContent = "所持金";
   }
 
@@ -1219,6 +1216,7 @@
       closeBuildMenu();
     }
 
+    dom["build-toggle-button"].hidden = !canOpenBuildMenu;
     dom["build-toggle-button"].disabled = !canControlLocalTurn();
     dom["build-toggle-button"].classList.toggle("build-toggle-button-open", isBuildMenuOpen && canOpenBuildMenu);
     dom["build-command-panel"].hidden = !isBuildMenuOpen;

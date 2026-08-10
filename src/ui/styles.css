@@ -551,17 +551,6 @@ h1 {
   margin-top: 8px;
 }
 
-.game-active .command-panel-build.command-panel-empty::after {
-  content: "建設できるものはありません";
-  display: block;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.game-active .command-panel-build.command-panel-empty {
-  display: block;
-}
-
 .contextual-action-panel {
   margin-bottom: 10px;
   padding: 10px 12px;
@@ -1914,5 +1903,175 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   .start-mode-card {
     transition: none;
+  }
+}
+
+/* Dense card rails: keep the illustration, remove duplicated chrome and empty rows. */
+.game-active .area-header-hand {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}
+
+.game-active .area-header-hand h2 {
+  margin-bottom: 0;
+}
+
+.game-active .hand-count-chip {
+  flex: 0 0 auto;
+  padding: 2px 7px;
+  border: 1px solid rgba(214, 164, 90, 0.2);
+  border-radius: 999px;
+  background: rgba(214, 164, 90, 0.09);
+  color: var(--accent-strong);
+}
+
+.game-active .player-area > .hand-zone {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.game-active .hand-summary-card {
+  position: relative;
+  display: block;
+  min-height: 0;
+  height: auto;
+  padding: 3px;
+  overflow: hidden;
+  background: #d9d0bc;
+}
+
+.game-active .hand-summary-card .card-art,
+.game-active .hand-summary-card .card-back-art {
+  display: block;
+  width: 100%;
+  min-height: 0;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.game-active .hand-summary-card .card-title {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  right: 7px;
+  z-index: 2;
+  display: flex;
+  min-width: 0;
+  width: fit-content;
+  max-width: calc(100% - 14px);
+  margin: 0;
+  padding: 3px 6px;
+  gap: 5px;
+  align-items: center;
+  border: 1px solid rgba(235, 220, 186, 0.16);
+  border-radius: 999px;
+  background: rgba(5, 14, 20, 0.84);
+  color: #f3eee1;
+  box-shadow: 0 3px 10px rgba(0, 4, 8, 0.3);
+  font-size: 0.58rem;
+  line-height: 1.2;
+}
+
+.game-active .hand-summary-card .card-category {
+  flex: 0 0 auto;
+  color: #e8b660;
+  font-size: 0.48rem;
+  letter-spacing: 0.04em;
+}
+
+.game-active .hand-summary-card .card-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.game-active .hand-summary-card .hand-summary-count {
+  position: absolute;
+  right: 7px;
+  bottom: 7px;
+  z-index: 2;
+  min-width: 26px;
+  margin: 0;
+  padding: 3px 6px;
+  border: 1px solid rgba(246, 218, 160, 0.24);
+  border-radius: 999px;
+  background: rgba(5, 14, 20, 0.88);
+  color: #f2c978;
+  box-shadow: 0 3px 10px rgba(0, 4, 8, 0.3);
+  font-size: 0.66rem;
+  line-height: 1;
+  text-align: center;
+}
+
+.game-active .contextual-action-panel:has(.command-panel-contextual.command-panel-empty) {
+  padding: 2px 4px;
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.game-active .contextual-action-panel:has(.command-panel-contextual.command-panel-empty) .command-group-label {
+  display: none;
+}
+
+@media (min-width: 901px) and (min-height: 650px) {
+  .game-active .battlefield {
+    grid-template-rows: minmax(0, 0.44fr) minmax(0, 1fr) minmax(0, 1.1fr);
+  }
+
+  .game-active .player-row-self {
+    grid-template-columns: 190px minmax(0, 1fr);
+  }
+
+  .game-active .player-row-self .country-panel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "title title"
+      "health personnel"
+      "attack equipment"
+      "defense buildings";
+    grid-template-rows: auto repeat(3, minmax(0, 1fr));
+    align-content: stretch;
+  }
+
+  .game-active .card-list,
+  .game-active .board-field .card-list,
+  .game-active .card-list-hand,
+  .game-active .board-opponent .card-list-hand {
+    height: auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 4px;
+  }
+
+  .game-active .board-opponent .hand-summary-card {
+    flex: 0 0 62px;
+    width: 62px;
+    max-width: 62px;
+  }
+
+  .game-active .board-field .hand-summary-card {
+    flex: 0 0 clamp(140px, 13vw, 168px);
+    width: clamp(140px, 13vw, 168px);
+    max-width: 168px;
+  }
+
+  .game-active .board-self .hand-summary-card {
+    flex: 0 0 clamp(180px, 17vw, 220px);
+    width: clamp(180px, 17vw, 220px);
+    max-width: 220px;
+  }
+
+  .game-active .board-self .card-art {
+    min-height: 0;
   }
 }
