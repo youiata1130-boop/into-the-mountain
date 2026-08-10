@@ -97,6 +97,8 @@
       "wallet-label",
       "build-toggle-button",
       "build-command-panel",
+      "card-action-popover",
+      "card-action-close-button",
       "contextual-command-panel",
       "contextual-action-hint"
     ].forEach(function (id) {
@@ -306,6 +308,9 @@
     }
 
     if (message.type === "state-sync") {
+      hideCardActionPopover();
+      clearSelectedCards();
+      closeBuildMenu();
       state = message.state;
       syncLabels();
       buildActionDefinitions();
@@ -343,6 +348,12 @@
   }
 
   function setEventOverlayVisible(visible) {
+    if (visible) {
+      hideCardActionPopover();
+      clearSelectedCards();
+      closeBuildMenu();
+    }
+
     dom["event-overlay"].hidden = !visible;
     dom["event-overlay"].setAttribute("aria-hidden", visible ? "false" : "true");
     dom["event-overlay"].classList.toggle("event-overlay-visible", visible);
@@ -380,6 +391,204 @@
 
   function closeBuildMenu() {
     isBuildMenuOpen = false;
+  }
+
+  function isCardActionPopoverOpen() {
+    return Boolean(
+      dom["card-action-popover"]
+      && !dom["card-action-popover"].hidden
+      && dom["card-action-popover"].classList.contains("contextual-action-popover-open")
+    );
+  }
+
+  function hideCardActionPopover() {
+    var popover = dom["card-action-popover"];
+
+    if (!popover) {
+      return;
+    }
+
+    try {
+      if (typeof popover.hidePopover === "function" && popover.matches(":popover-open")) {
+        popover.hidePopover();
+      }
+    } catch (error) {
+      // The class/hidden fallback below also supports browsers without Popover API.
+    }
+
+    popover.classList.remove("contextual-action-popover-open");
+    popover.hidden = true;
+    popover.style.removeProperty("left");
+    popover.style.removeProperty("top");
+    popover.removeAttribute("data-placement");
+  }
+
+  function findCardElement(container, selectionKey) {
+    var cards;
+    var index;
+
+    if (!container || !selectionKey) {
+      return null;
+    }
+
+    cards = container.querySelectorAll("[data-selection-key]");
+    for (index = 0; index < cards.length; index += 1) {
+      if (cards[index].dataset.selectionKey === selectionKey) {
+        return cards[index];
+      }
+    }
+
+    return null;
+  }
+
+  function getSelectedCardElement() {
+    if (selectedHandCardKey) {
+      return findCardElement(dom["self-hand"], selectedHandCardKey);
+    }
+
+    if (selectedFieldCardKey) {
+      return findCardElement(dom["shared-field"], selectedFieldCardKey);
+    }
+
+    return null;
+  }
+
+  function positionCardActionPopover() {
+    var popover = dom["card-action-popover"];
+    var anchor = getSelectedCardElement();
+    var anchorRect;
+    var popoverRect;
+    var viewportPadding = 8;
+    var gap = 10;
+    var left;
+    var top;
+
+    if (!isCardActionPopoverOpen() || !anchor) {
+      return;
+    }
+
+    if (window.matchMedia("(max-width: 900px)").matches) {
+      popover.style.removeProperty("left");
+      popover.style.removeProperty("top");
+      popover.setAttribute("data-placement", "bottom-sheet");
+      return;
+    }
+
+    anchorRect = anchor.getBoundingClientRect();
+    popoverRect = popover.getBoundingClientRect();
+    left = anchorRect.left + (anchorRect.width / 2) - (popoverRect.width / 2);
+    left = Math.max(viewportPadding, Math.min(left, window.innerWidth - popoverRect.width - viewportPadding));
+    top = anchorRect.top - popoverRect.height - gap;
+
+    if (top < viewportPadding) {
+      top = anchorRect.bottom + gap;
+      popover.setAttribute("data-placement", "below");
+    } else {
+      popover.setAttribute("data-placement", "above");
+    }
+
+    top = Math.max(viewportPadding, Math.min(top, window.innerHeight - popoverRect.height - viewportPadding));
+    popover.style.left = Math.round(left) + "px";
+    popover.style.top = Math.round(top) + "px";
+  }
+
+  function focusCardActionPopover() {
+    var firstAction = dom["contextual-command-panel"].querySelector("button:not([hidden])");
+    var focusTarget = firstAction || dom["card-action-close-button"];
+
+    if (focusTarget) {
+      focusTarget.focus({ preventScroll: true });
+    }
+  }
+
+  function showCardActionPopover() {
+    var popover = dom["card-action-popover"];
+    var wasOpen = isCardActionPopoverOpen();
+
+    if (!popover) {
+      return;
+    }
+
+    popover.hidden = false;
+    popover.classList.add("contextual-action-popover-open");
+
+    try {
+      if (typeof popover.showPopover === "function" && !popover.matches(":popover-open")) {
+        popover.showPopover();
+      }
+    } catch (error) {
+      // Fixed-position fallback remains visible through the open class.
+    }
+
+    window.requestAnimationFrame(function () {
+      positionCardActionPopover();
+      if (!wasOpen) {
+        focusCardActionPopover();
+      }
+    });
+  }
+
+  function syncCardActionPopover(visible) {
+    if (visible) {
+      showCardActionPopover();
+    } else {
+      hideCardActionPopover();
+    }
+  }
+
+  function closeSelectedCardAction(restoreFocus) {
+    var selectionKey = selectedHandCardKey || selectedFieldCardKey;
+    var selectionZone = selectedHandCardKey ? "hand" : "field";
+
+    hideCardActionPopover();
+    clearSelectedCards();
+    render();
+
+    if (restoreFocus && selectionKey) {
+      window.requestAnimationFrame(function () {
+        var container = selectionZone === "hand" ? dom["self-hand"] : dom["shared-field"];
+        var card = findCardElement(container, selectionKey);
+        if (card) {
+          card.focus({ preventScroll: true });
+        }
+      });
+    }
+  }
+
+  function isVisibleFocusTarget(element) {
+    return Boolean(
+      element
+      && !element.hidden
+      && !element.disabled
+      && !element.closest("[hidden]")
+      && element.getClientRects().length
+    );
+  }
+
+  function restoreFocusAfterAction(selectionKey, selectionZone, preferredButtonId) {
+    window.requestAnimationFrame(function () {
+      var selectionContainer = selectionZone === "field" ? dom["shared-field"] : dom["self-hand"];
+      var candidates = [
+        findCardElement(selectionContainer, selectionKey),
+        preferredButtonId ? dom[preferredButtonId] : null,
+        dom["self-hand"].querySelector("[data-selection-key]"),
+        dom["shared-field"].querySelector("[data-selection-key]"),
+        document.querySelector(".hand-corner-actions button:not([hidden]):not(:disabled)"),
+        dom["reset-button"]
+      ];
+      var index;
+
+      if (!dom["event-overlay"].hidden) {
+        return;
+      }
+
+      for (index = 0; index < candidates.length; index += 1) {
+        if (isVisibleFocusTarget(candidates[index])) {
+          candidates[index].focus({ preventScroll: true });
+          return;
+        }
+      }
+    });
   }
 
   function syncSelectedHandCard() {
@@ -752,9 +961,16 @@
     if (options.selectable) {
       className += " hand-summary-card-selectable";
       attributes += ' data-selection-key="' + escapeHtml(createCardSelectionKey(summary.category, summary.name)) + '"';
+      attributes += ' role="button" tabindex="0" aria-haspopup="dialog" aria-controls="card-action-popover"';
     }
     if (options.selected) {
       className += " hand-summary-card-selected";
+    }
+    if (options.selectable) {
+      attributes += ' aria-expanded="' + (options.selected ? "true" : "false") + '"';
+      attributes += ' aria-label="' + escapeHtml(
+        summary.name + " " + summary.count + "枚、行動を" + (options.selected ? "閉じる" : "開く")
+      ) + '"';
     }
 
     return [
@@ -1181,6 +1397,7 @@
     var selectedSummary = getSelectedHandSummary() || getSelectedFieldSummary();
     var activePlayer = getActivePlayer();
     var canOpenBuildMenu = false;
+    var hintText = "";
 
     actionDefinitions.forEach(function (action) {
       var visible = false;
@@ -1202,12 +1419,7 @@
         buildVisibleCount += 1;
       }
 
-      if (
-        visible
-        && action.id !== "attack-button"
-        && action.id !== "end-turn-button"
-        && action.id.indexOf("build-") !== 0
-      ) {
+      if (visible && action.selection) {
         contextualVisibleCount += 1;
       }
     });
@@ -1218,37 +1430,33 @@
 
     dom["build-toggle-button"].hidden = !canOpenBuildMenu;
     dom["build-toggle-button"].disabled = !canControlLocalTurn();
+    dom["build-toggle-button"].setAttribute("aria-expanded", isBuildMenuOpen && canOpenBuildMenu ? "true" : "false");
     dom["build-toggle-button"].classList.toggle("build-toggle-button-open", isBuildMenuOpen && canOpenBuildMenu);
     dom["build-command-panel"].hidden = !isBuildMenuOpen;
     dom["build-command-panel"].classList.toggle("command-panel-empty", buildVisibleCount === 0);
     dom["contextual-command-panel"].classList.toggle("command-panel-empty", contextualVisibleCount === 0);
 
     if (!canControlLocalTurn()) {
-      dom["contextual-action-hint"].textContent = "相手の手番です";
-      return;
-    }
-
-    if (!selectedSummary) {
-      dom["contextual-action-hint"].textContent = "手札または場札のカードを選ぶと行動が表示されます";
-      return;
-    }
-
-    if (contextualVisibleCount === 0) {
+      hintText = "相手の手番です";
+    } else if (!selectedSummary) {
+      hintText = "手札または場札のカードを選択してください";
+    } else if (contextualVisibleCount === 0) {
       if (
         selectedSummary.category === labels.category.PERSONNEL
         && labels.personnelCost[selectedSummary.name]
         && activePlayer.gold < labels.personnelCost[selectedSummary.name]
       ) {
-        dom["contextual-action-hint"].textContent =
-          selectedSummary.name + "を雇用するには金貨 " + labels.personnelCost[selectedSummary.name] + " 枚が必要です";
-        return;
+        hintText = selectedSummary.name + "を雇用するには金貨 "
+          + labels.personnelCost[selectedSummary.name] + " 枚が必要です";
+      } else {
+        hintText = selectedSummary.name + " では実行できる行動がありません";
       }
-
-      dom["contextual-action-hint"].textContent = selectedSummary.name + " では実行できる行動がありません";
-      return;
+    } else {
+      hintText = selectedSummary.category + " " + selectedSummary.name + " の行動";
     }
 
-    dom["contextual-action-hint"].textContent = selectedSummary.category + " " + selectedSummary.name + " の行動";
+    dom["contextual-action-hint"].textContent = hintText;
+    syncCardActionPopover(Boolean(selectedSummary) && canControlLocalTurn());
   }
 
   function render() {
@@ -1382,6 +1590,9 @@
       return;
     }
 
+    hideCardActionPopover();
+    clearSelectedCards();
+    closeBuildMenu();
     state.turn += 1;
     activePlayer = getActivePlayer();
     state.actionPoints = state.maxActionPoints + (activePlayer.modifiers.actionPointBonus || 0);
@@ -1466,6 +1677,9 @@
 
   function finishGame(winnerName, message, shortMessage) {
     clearCpuTurnTimer();
+    hideCardActionPopover();
+    clearSelectedCards();
+    closeBuildMenu();
     state.winner = winnerName;
     state.started = false;
     state.actionPoints = 0;
@@ -1484,9 +1698,11 @@
       showActionToast(shortMessage);
     }
 
+    hideCardActionPopover();
+    clearSelectedCards();
+    closeBuildMenu();
+
     if (state.winner) {
-      clearSelectedHandCard();
-      closeBuildMenu();
       render();
       return;
     }
@@ -1498,8 +1714,6 @@
       state.statusMessage = message + " 残り行動ポイントは" + state.actionPoints + "です。";
     }
 
-    syncSelectedHandCard();
-    closeBuildMenu();
     broadcastState();
     render();
   }
@@ -1514,7 +1728,8 @@
     hideEventOverlay();
     hideActionToast();
     clearCpuTurnTimer();
-    clearSelectedHandCard();
+    hideCardActionPopover();
+    clearSelectedCards();
     closeBuildMenu();
     updateLocalPlayerNames();
     actionLogEntries = [];
@@ -2133,6 +2348,50 @@
     render();
   }
 
+  function toggleSelectedCard(cardElement, selectionZone) {
+    var selectionKey;
+
+    if (!cardElement || !canControlLocalTurn()) {
+      return;
+    }
+
+    selectionKey = cardElement.dataset.selectionKey;
+    hideCardActionPopover();
+    closeBuildMenu();
+
+    if (selectionZone === "hand") {
+      if (selectedHandCardKey === selectionKey) {
+        clearSelectedHandCard();
+      } else {
+        selectedHandCardKey = selectionKey;
+        clearSelectedFieldCard();
+      }
+    } else if (selectedFieldCardKey === selectionKey) {
+      clearSelectedFieldCard();
+    } else {
+      selectedFieldCardKey = selectionKey;
+      clearSelectedHandCard();
+    }
+
+    render();
+  }
+
+  function handleCardKeyboardSelection(event, selectionZone) {
+    var cardElement;
+
+    if (event.key !== "Enter" && event.key !== " " && event.key !== "Spacebar") {
+      return;
+    }
+
+    cardElement = event.target.closest("[data-selection-key]");
+    if (!cardElement) {
+      return;
+    }
+
+    event.preventDefault();
+    toggleSelectedCard(cardElement, selectionZone);
+  }
+
   function bindEvents() {
     dom["start-button"].addEventListener("click", startGame);
     dom["reset-button"].addEventListener("click", resetState);
@@ -2156,44 +2415,84 @@
         return;
       }
 
+      if (!isBuildMenuOpen) {
+        hideCardActionPopover();
+        clearSelectedCards();
+      }
       isBuildMenuOpen = !isBuildMenuOpen;
       render();
     });
     dom["self-hand"].addEventListener("click", function (event) {
       var cardElement = event.target.closest("[data-selection-key]");
-
-      if (!cardElement || !canControlLocalTurn()) {
-        return;
-      }
-
-      if (selectedHandCardKey === cardElement.dataset.selectionKey) {
-        clearSelectedHandCard();
-      } else {
-        selectedHandCardKey = cardElement.dataset.selectionKey;
-        clearSelectedFieldCard();
-      }
-
-      render();
+      toggleSelectedCard(cardElement, "hand");
+    });
+    dom["self-hand"].addEventListener("keydown", function (event) {
+      handleCardKeyboardSelection(event, "hand");
     });
     dom["shared-field"].addEventListener("click", function (event) {
       var cardElement = event.target.closest("[data-selection-key]");
+      toggleSelectedCard(cardElement, "field");
+    });
+    dom["shared-field"].addEventListener("keydown", function (event) {
+      handleCardKeyboardSelection(event, "field");
+    });
+    dom["card-action-close-button"].addEventListener("click", function () {
+      closeSelectedCardAction(true);
+    });
+    document.addEventListener("click", function (event) {
+      if (selectedHandCardKey || selectedFieldCardKey) {
+        if (event.target.closest("[data-selection-key]") || event.target.closest("#card-action-popover")) {
+          return;
+        }
 
-      if (!cardElement || !canControlLocalTurn()) {
+        closeSelectedCardAction(false);
         return;
       }
 
-      if (selectedFieldCardKey === cardElement.dataset.selectionKey) {
-        clearSelectedFieldCard();
-      } else {
-        selectedFieldCardKey = cardElement.dataset.selectionKey;
-        clearSelectedHandCard();
+      if (isBuildMenuOpen && !event.target.closest(".hand-corner-actions .command-group")) {
+        closeBuildMenu();
+        render();
+      }
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape") {
+        return;
       }
 
-      render();
+      if (selectedHandCardKey || selectedFieldCardKey) {
+        event.preventDefault();
+        closeSelectedCardAction(true);
+        return;
+      }
+
+      if (isBuildMenuOpen) {
+        event.preventDefault();
+        closeBuildMenu();
+        render();
+        dom["build-toggle-button"].focus({ preventScroll: true });
+      }
     });
+    dom["self-hand"].addEventListener("scroll", positionCardActionPopover, { passive: true });
+    dom["shared-field"].addEventListener("scroll", positionCardActionPopover, { passive: true });
+    window.addEventListener("scroll", positionCardActionPopover, { passive: true });
+    window.addEventListener("resize", positionCardActionPopover);
 
     actionDefinitions.forEach(function (action) {
-      dom[action.id].addEventListener("click", action.run);
+      dom[action.id].addEventListener("click", function () {
+        var selectionKey = selectedHandCardKey || selectedFieldCardKey;
+        var selectionZone = selectedFieldCardKey ? "field" : "hand";
+        var isBuildAction = action.id.indexOf("build-") === 0;
+
+        if (action.selection) {
+          hideCardActionPopover();
+          clearSelectedCards();
+        }
+        action.run();
+
+        if (action.selection || isBuildAction) {
+          restoreFocusAfterAction(selectionKey, selectionZone, isBuildAction ? "build-toggle-button" : "");
+        }
+      });
     });
   }
 

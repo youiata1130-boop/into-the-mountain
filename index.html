@@ -213,49 +213,63 @@
                 <p class="wallet-chip"><span id="wallet-label">所持金</span> <strong id="self-gold">0</strong> G</p>
                 <span id="self-hand-count" class="zone-count hand-count-chip"></span>
               </div>
-              <section class="turn-command-row">
-                <div class="command-group">
-                  <button id="build-toggle-button" class="action-button build-toggle-button" type="button">建設</button>
-                  <div id="build-command-panel" class="command-panel command-panel-build" hidden>
-                    <button id="build-wood-fence-button" class="action-button" type="button">木の柵を建てる</button>
-                    <button id="build-castle-wall-button" class="action-button" type="button">城壁を建てる</button>
-                    <button id="build-evolution-temple-button" class="action-button" type="button">進化の神殿を建てる</button>
-                    <button id="build-victory-temple-button" class="action-button" type="button">勝利の神殿を建てる</button>
-                  </div>
-                </div>
-                <button id="attack-button" class="action-button" type="button">攻撃</button>
-                <button id="end-turn-button" class="secondary-button" type="button">ターン終了</button>
-              </section>
             </div>
           </div>
-          <section class="contextual-action-panel">
-            <div class="contextual-action-header">
-              <p class="command-group-label">選択中の行動</p>
-              <p id="contextual-action-hint" class="contextual-action-hint">手札または場札のカードを選ぶと行動が表示されます</p>
-            </div>
-            <div id="contextual-command-panel" class="command-panel command-panel-contextual">
-              <button id="gather-wood-button" class="secondary-button" type="button">2行動Pで木を獲得</button>
-              <button id="sell-wood-button" class="secondary-button" type="button">木を売却</button>
-              <button id="sell-stone-button" class="secondary-button" type="button">石を売却</button>
-              <button id="sell-iron-button" class="secondary-button" type="button">鉄を売却</button>
-              <button id="craft-axe-button" class="action-button" type="button">木の斧を作る</button>
-              <button id="use-axe-button" class="secondary-button" type="button">木の斧を使う</button>
-              <button id="craft-pickaxe-button" class="action-button" type="button">木のつるはしを作る</button>
-              <button id="use-pickaxe-button" class="secondary-button" type="button">木のつるはしを使う</button>
-              <button id="craft-stone-pickaxe-button" class="action-button" type="button">石のつるはしを作る</button>
-              <button id="use-stone-pickaxe-button" class="secondary-button" type="button">石のつるはしを使う</button>
-              <button id="craft-stone-sword-button" class="action-button" type="button">石の剣を作る</button>
-              <button id="craft-iron-sword-button" class="action-button" type="button">鉄の剣を作る</button>
-              <button id="hire-lumberjack-button" class="action-button" type="button">木こりを雇用 (2G)</button>
-              <button id="hire-swordsman-button" class="action-button" type="button">剣士を雇用 (4G)</button>
-              <button id="hire-sage-button" class="action-button" type="button">賢者を雇用 (6G)</button>
-            </div>
-          </section>
           <section class="zone hand-zone" aria-label="自分の手札">
             <div id="self-hand" class="card-list card-list-hand"></div>
+            <section class="turn-command-row hand-corner-actions" aria-label="手番操作">
+              <button id="gather-wood-button" class="secondary-button" type="button" title="2行動ポイントを使用" aria-label="2行動ポイントで木を獲得">木を獲得</button>
+              <div class="command-group">
+                <button id="build-toggle-button" class="action-button build-toggle-button" type="button" aria-controls="build-command-panel" aria-expanded="false">建設</button>
+                <div id="build-command-panel" class="command-panel command-panel-build" role="group" aria-labelledby="build-toggle-button" hidden>
+                  <button id="build-wood-fence-button" class="action-button" type="button">木の柵を建てる</button>
+                  <button id="build-castle-wall-button" class="action-button" type="button">城壁を建てる</button>
+                  <button id="build-evolution-temple-button" class="action-button" type="button">進化の神殿を建てる</button>
+                  <button id="build-victory-temple-button" class="action-button" type="button">勝利の神殿を建てる</button>
+                </div>
+              </div>
+              <button id="attack-button" class="action-button" type="button">攻撃</button>
+              <button id="end-turn-button" class="secondary-button" type="button" aria-label="ターン終了（パス）">パス</button>
+            </section>
           </section>
         </article>
       </section>
+    </section>
+
+    <section
+      id="card-action-popover"
+      class="contextual-action-panel contextual-action-popover"
+      popover="manual"
+      role="dialog"
+      aria-modal="false"
+      aria-labelledby="card-action-title"
+      aria-describedby="contextual-action-hint"
+      tabindex="-1"
+      hidden
+    >
+      <div class="contextual-action-header">
+        <div>
+          <p id="card-action-title" class="command-group-label">カードの行動</p>
+          <p id="contextual-action-hint" class="contextual-action-hint" aria-live="polite" aria-atomic="true"></p>
+        </div>
+        <button id="card-action-close-button" class="popover-close-button" type="button" aria-label="カードの行動を閉じる">×</button>
+      </div>
+      <div id="contextual-command-panel" class="command-panel command-panel-contextual">
+        <button id="sell-wood-button" class="secondary-button" type="button">木を売却</button>
+        <button id="sell-stone-button" class="secondary-button" type="button">石を売却</button>
+        <button id="sell-iron-button" class="secondary-button" type="button">鉄を売却</button>
+        <button id="craft-axe-button" class="action-button" type="button">木の斧を作る</button>
+        <button id="use-axe-button" class="secondary-button" type="button">木の斧を使う</button>
+        <button id="craft-pickaxe-button" class="action-button" type="button">木のつるはしを作る</button>
+        <button id="use-pickaxe-button" class="secondary-button" type="button">木のつるはしを使う</button>
+        <button id="craft-stone-pickaxe-button" class="action-button" type="button">石のつるはしを作る</button>
+        <button id="use-stone-pickaxe-button" class="secondary-button" type="button">石のつるはしを使う</button>
+        <button id="craft-stone-sword-button" class="action-button" type="button">石の剣を作る</button>
+        <button id="craft-iron-sword-button" class="action-button" type="button">鉄の剣を作る</button>
+        <button id="hire-lumberjack-button" class="action-button" type="button">木こりを雇用 (2G)</button>
+        <button id="hire-swordsman-button" class="action-button" type="button">剣士を雇用 (4G)</button>
+        <button id="hire-sage-button" class="action-button" type="button">賢者を雇用 (6G)</button>
+      </div>
     </section>
 
     <section class="status-panel action-log-panel">
