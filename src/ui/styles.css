@@ -3105,16 +3105,16 @@ h3 {
   display: none;
   inset: 6px -12px 6px 12px;
   z-index: -2;
-  border: 1px solid rgba(194, 126, 68, 0.66);
-  background: linear-gradient(180deg, #e4ad6d, #d79558);
+  border: 1px solid var(--card-stack-far-border, rgba(194, 126, 68, 0.66));
+  background: var(--card-stack-far, linear-gradient(180deg, #e4ad6d, #d79558));
   box-shadow: 2px 3px 7px rgba(91, 65, 41, 0.18);
 }
 
 .game-active .hand-summary-card-stacked::after {
   inset: 3px -6px 3px 6px;
   z-index: -1;
-  border: 1px solid rgba(221, 158, 83, 0.76);
-  background: linear-gradient(180deg, #fff0c4, #edc784);
+  border: 1px solid var(--card-stack-near-border, rgba(221, 158, 83, 0.76));
+  background: var(--card-stack-near, linear-gradient(180deg, #fff0c4, #edc784));
   box-shadow: 2px 3px 7px rgba(91, 65, 41, 0.16);
 }
 
@@ -3177,6 +3177,224 @@ h3 {
   }
 }
 
+/* Card families use a word, symbol, silhouette, color, and pattern together. */
+.game-active .hand-summary-card[data-card-category] {
+  --card-kind-accent: #b67b55;
+  --card-kind-deep: #654631;
+  --card-kind-soft: rgba(255, 243, 219, 0.97);
+  --card-kind-paper-top: #fff8e7;
+  --card-kind-paper-bottom: #f4e4c7;
+  --card-kind-count: rgba(255, 220, 157, 0.97);
+  --card-kind-line: rgba(156, 101, 61, 0.62);
+  --card-kind-focus: rgba(202, 134, 81, 0.3);
+  --card-kind-ribbon: linear-gradient(180deg, #d99b68, #b56f49);
+  border-width: 2px;
+  border-color: var(--card-kind-line);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.5), transparent 34%),
+    linear-gradient(180deg, var(--card-kind-paper-top), var(--card-kind-paper-bottom));
+}
+
+.game-active .hand-summary-card[data-card-category="resource"] {
+  --card-kind-accent: #5f9b67;
+  --card-kind-deep: #315b3d;
+  --card-kind-soft: rgba(237, 248, 221, 0.97);
+  --card-kind-paper-top: #f7fae9;
+  --card-kind-paper-bottom: #e4efd2;
+  --card-kind-count: rgba(215, 238, 184, 0.97);
+  --card-kind-line: rgba(78, 139, 86, 0.66);
+  --card-kind-focus: rgba(95, 155, 103, 0.3);
+  --card-kind-ribbon:
+    radial-gradient(circle at 3px 3px, rgba(255, 255, 241, 0.92) 0 1px, transparent 1.4px) 0 0 / 6px 6px,
+    linear-gradient(180deg, #75b679, #4f8d5c);
+  --card-stack-near: linear-gradient(180deg, #e3f2cc, #bcd79b);
+  --card-stack-far: linear-gradient(180deg, #9fc27e, #78a260);
+  --card-stack-near-border: rgba(82, 137, 75, 0.72);
+  --card-stack-far-border: rgba(59, 111, 64, 0.76);
+}
+
+.game-active .hand-summary-card[data-card-category="tool"] {
+  --card-kind-accent: #4f86a0;
+  --card-kind-deep: #31596b;
+  --card-kind-soft: rgba(226, 243, 247, 0.97);
+  --card-kind-paper-top: #f1f9f9;
+  --card-kind-paper-bottom: #d9ebed;
+  --card-kind-count: rgba(202, 230, 236, 0.97);
+  --card-kind-line: rgba(66, 126, 150, 0.68);
+  --card-kind-focus: rgba(79, 134, 160, 0.3);
+  --card-kind-ribbon:
+    repeating-linear-gradient(-45deg, rgba(255, 247, 218, 0.9) 0 2px, transparent 2px 5px),
+    linear-gradient(180deg, #65a1b8, #3e718b);
+  --card-stack-near: linear-gradient(180deg, #d8edf1, #a9cbd5);
+  --card-stack-far: linear-gradient(180deg, #82b3c4, #5c8ea3);
+  --card-stack-near-border: rgba(59, 112, 134, 0.72);
+  --card-stack-far-border: rgba(45, 91, 111, 0.78);
+}
+
+.game-active .hand-summary-card[data-card-category="personnel"] {
+  --card-kind-accent: #8a668f;
+  --card-kind-deep: #634868;
+  --card-kind-soft: rgba(246, 229, 239, 0.97);
+  --card-kind-paper-top: #fbf1f5;
+  --card-kind-paper-bottom: #eedbe7;
+  --card-kind-count: rgba(236, 207, 225, 0.97);
+  --card-kind-line: rgba(132, 91, 139, 0.68);
+  --card-kind-focus: rgba(138, 102, 143, 0.3);
+  --card-kind-ribbon:
+    radial-gradient(circle at 50% 4px, rgba(255, 245, 232, 0.94) 0 1.5px, transparent 1.9px) 0 0 / 7px 8px,
+    linear-gradient(180deg, #a77eaa, #76517d);
+  --card-stack-near: linear-gradient(180deg, #f1dce9, #d7b8d0);
+  --card-stack-far: linear-gradient(180deg, #ba8daf, #966b96);
+  --card-stack-near-border: rgba(122, 82, 128, 0.7);
+  --card-stack-far-border: rgba(91, 59, 99, 0.76);
+}
+
+.game-active .hand-summary-card[data-card-category="building"] {
+  --card-kind-accent: #b77f4c;
+  --card-kind-deep: #714d2e;
+  --card-kind-soft: rgba(250, 237, 213, 0.97);
+  --card-kind-paper-top: #fff7e5;
+  --card-kind-paper-bottom: #ead8b9;
+  --card-kind-count: rgba(238, 211, 163, 0.97);
+  --card-kind-line: rgba(164, 105, 57, 0.68);
+  --card-kind-focus: rgba(183, 127, 76, 0.3);
+  --card-kind-ribbon:
+    linear-gradient(rgba(255, 246, 219, 0.7) 1px, transparent 1px) 0 0 / 7px 7px,
+    linear-gradient(90deg, rgba(255, 246, 219, 0.7) 1px, transparent 1px) 0 0 / 7px 7px,
+    linear-gradient(180deg, #c49462, #9d653d);
+}
+
+.game-active .hand-summary-card[data-card-category="event"] {
+  --card-kind-accent: #c76568;
+  --card-kind-deep: #7b4147;
+  --card-kind-soft: rgba(252, 229, 222, 0.97);
+  --card-kind-paper-top: #fff2e8;
+  --card-kind-paper-bottom: #f2d5ce;
+  --card-kind-count: rgba(246, 199, 188, 0.97);
+  --card-kind-line: rgba(178, 78, 85, 0.7);
+  --card-kind-focus: rgba(199, 101, 104, 0.3);
+  --card-kind-ribbon:
+    repeating-linear-gradient(-45deg, rgba(255, 244, 210, 0.95) 0 3px, transparent 3px 6px),
+    linear-gradient(180deg, #d77872, #a94c55);
+}
+
+.game-active .hand-summary-card[data-card-category] .card-title {
+  border-color: var(--card-kind-line);
+  background: var(--card-kind-soft);
+  color: var(--card-kind-deep);
+}
+
+.game-active .hand-summary-card[data-card-category] .card-category {
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 4px;
+  align-items: center;
+  padding-right: 5px;
+  border-right: 1px solid var(--card-kind-line);
+  color: var(--card-kind-deep);
+  font-size: 0.5rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+.game-active .hand-summary-card[data-card-category] .card-category-mark {
+  display: grid;
+  flex: 0 0 15px;
+  width: 15px;
+  height: 15px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.66);
+  border-radius: 999px;
+  background: var(--card-kind-accent);
+  color: #fffdf3;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34);
+  font-family: "Segoe UI Symbol", "Yu Gothic UI", sans-serif;
+  font-size: 0.56rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.game-active .hand-summary-card[data-card-category="tool"] .card-category-mark {
+  border-radius: 3px;
+}
+
+.game-active .hand-summary-card[data-card-category="personnel"] .card-category-mark {
+  border-radius: 999px 999px 5px 5px;
+}
+
+.game-active .hand-summary-card[data-card-category="building"] .card-category-mark {
+  border-radius: 2px;
+  clip-path: polygon(50% 0, 100% 35%, 100% 100%, 0 100%, 0 35%);
+}
+
+.game-active .hand-summary-card[data-card-category="event"] .card-category-mark {
+  border-radius: 0;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+
+.game-active .hand-summary-card[data-card-category] .card-name {
+  color: var(--card-kind-deep);
+  font-weight: 900;
+}
+
+.game-active .hand-summary-card[data-card-category] .card-kind-ribbon {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  z-index: 1;
+  width: 7px;
+  border-right: 1px solid rgba(255, 255, 255, 0.58);
+  border-radius: 6px 0 0 6px;
+  background: var(--card-kind-ribbon);
+  box-shadow: 2px 0 5px rgba(32, 59, 49, 0.12);
+  pointer-events: none;
+}
+
+.game-active .hand-summary-card[data-card-category] .hand-summary-count {
+  border-color: var(--card-kind-line);
+  background: var(--card-kind-count);
+  color: var(--card-kind-deep);
+}
+
+.game-active .hand-summary-card[data-card-category].hand-summary-card-selected {
+  border-color: var(--card-kind-accent);
+  box-shadow:
+    0 0 0 3px var(--card-kind-focus),
+    0 12px 24px rgba(76, 103, 82, 0.2);
+}
+
+.game-active .hand-summary-card[data-card-category].hand-summary-card-selectable:focus-visible {
+  outline-color: var(--card-kind-accent);
+}
+
+.country-card .tool-icon {
+  border-radius: 4px;
+  border-color: rgba(79, 134, 160, 0.62);
+}
+
+.country-card .tool-icon .equipment-icon-power {
+  background: #31596b;
+}
+
+.country-card .personnel-icon {
+  border-radius: 999px 999px 6px 6px;
+  border-color: rgba(138, 102, 143, 0.62);
+}
+
+.country-card .personnel-icon .equipment-icon-power {
+  background: #634868;
+}
+
+.country-card .building-icon {
+  border-radius: 3px;
+  border-color: rgba(183, 127, 76, 0.62);
+}
+
+.country-card .building-icon .equipment-icon-power {
+  background: #714d2e;
+}
+
 @media (forced-colors: active) {
   .game-active .hand-summary-card-stacked::before,
   .game-active .hand-summary-card-stacked::after {
@@ -3185,5 +3403,16 @@ h3 {
 
   .game-active .hand-summary-card .hand-summary-count {
     border-color: ButtonText;
+  }
+
+  .game-active .hand-summary-card[data-card-category],
+  .game-active .hand-summary-card[data-card-category] .card-title,
+  .game-active .hand-summary-card[data-card-category] .card-category-mark,
+  .game-active .hand-summary-card[data-card-category] .hand-summary-count {
+    border-color: CanvasText;
+  }
+
+  .game-active .hand-summary-card[data-card-category] .card-kind-ribbon {
+    background: CanvasText;
   }
 }

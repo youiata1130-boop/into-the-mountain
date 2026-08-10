@@ -942,9 +942,30 @@
     ].join("");
   }
 
+  function getCardCategoryPresentation(category) {
+    if (category === labels.category.RESOURCE) {
+      return { token: "resource", mark: "◆" };
+    }
+    if (category === labels.category.TOOL) {
+      return { token: "tool", mark: "⚒" };
+    }
+    if (category === labels.category.PERSONNEL) {
+      return { token: "personnel", mark: "人" };
+    }
+    if (category === labels.category.BUILDING) {
+      return { token: "building", mark: "⌂" };
+    }
+    if (category === labels.category.EVENT) {
+      return { token: "event", mark: "!" };
+    }
+
+    return { token: "other", mark: "•" };
+  }
+
   function createSummaryCardMarkup(summary, hidden, options) {
     var className;
     var attributes = "";
+    var categoryPresentation;
     var countAttributes;
     var isStacked;
 
@@ -968,7 +989,9 @@
       );
     }
 
+    categoryPresentation = getCardCategoryPresentation(summary.category);
     className = "card hand-summary-card";
+    attributes += ' data-card-category="' + categoryPresentation.token + '"';
     if (isStacked) {
       className += " hand-summary-card-stacked";
       if (summary.count > 2) {
@@ -986,7 +1009,8 @@
     if (options.selectable) {
       attributes += ' aria-expanded="' + (options.selected ? "true" : "false") + '"';
       attributes += ' aria-label="' + escapeHtml(
-        summary.name + "、" + (isStacked ? summary.count + "枚の束" : summary.count + "枚") + "。行動を" +
+        summary.category + "カード、" + summary.name + "、" +
+        (isStacked ? summary.count + "枚の束" : summary.count + "枚") + "。行動を" +
         (options.selected ? "閉じる" : "開く")
       ) + '"';
     }
@@ -997,10 +1021,14 @@
     return [
       '<article class="' + className + '"' + attributes + '>',
       '<p class="card-title">',
-      '<span class="card-category">' + escapeHtml(summary.category) + "</span>",
+      '<span class="card-category">',
+      '<span class="card-category-mark" aria-hidden="true">' + escapeHtml(categoryPresentation.mark) + "</span>",
+      '<span class="card-category-label">' + escapeHtml(summary.category) + "</span>",
+      "</span>",
       '<span class="card-name">' + escapeHtml(summary.name) + "</span>",
       "</p>",
       '<img class="card-art" src="' + escapeHtml(summary.imagePath) + '" alt="' + escapeHtml(summary.name) + '">',
+      '<span class="card-kind-ribbon" aria-hidden="true"></span>',
       '<p class="hand-summary-count"' + countAttributes + '>×' + summary.count + "</p>",
       "</article>"
     ].join("");
@@ -1190,7 +1218,7 @@
   function renderEquipment(container, equipment) {
     renderIconList(container, equipment, "装備なし", function (item) {
       return "+" + item.attackBonus;
-    }, "");
+    }, "tool-icon");
   }
 
   function renderBuildings(container, buildings) {
