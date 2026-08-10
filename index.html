@@ -85,7 +85,10 @@
 
     <section class="battlefield" aria-label="game-board">
       <section class="player-row">
-        <aside class="country-panel">
+        <aside class="country-panel country-card country-card-opponent" aria-labelledby="opponent-country-name">
+          <div class="country-artwork" aria-hidden="true">
+            <img src="assets/images/countries/starting-kingdom.webp" alt="" width="1024" height="1024">
+          </div>
           <div class="country-title-block">
             <h2 id="opponent-country-name" class="country-name">始まりの国</h2>
           </div>
@@ -93,11 +96,11 @@
             <span class="country-stat-label">体力</span>
             <strong id="opponent-health" class="country-stat-value">10</strong>
           </div>
-          <div class="country-stat country-stat-compact">
+          <div class="country-stat country-stat-compact country-stat-attack">
             <span class="country-stat-label">攻撃</span>
             <strong id="opponent-attack" class="country-stat-value country-stat-value-small">0</strong>
           </div>
-          <div class="country-stat country-stat-compact">
+          <div class="country-stat country-stat-compact country-stat-defense">
             <span class="country-stat-label">防御</span>
             <strong id="opponent-defense" class="country-stat-value country-stat-value-small">2</strong>
           </div>
@@ -162,7 +165,10 @@
       </section>
 
       <section class="player-row player-row-self">
-        <aside class="country-panel">
+        <aside class="country-panel country-card country-card-self" aria-labelledby="self-country-name">
+          <div class="country-artwork" aria-hidden="true">
+            <img src="assets/images/countries/starting-kingdom.webp" alt="" width="1024" height="1024">
+          </div>
           <div class="country-title-block">
             <h2 id="self-country-name" class="country-name">始まりの国</h2>
           </div>
@@ -170,11 +176,11 @@
             <span class="country-stat-label">体力</span>
             <strong id="self-health" class="country-stat-value">10</strong>
           </div>
-          <div class="country-stat country-stat-compact">
+          <div class="country-stat country-stat-compact country-stat-attack">
             <span class="country-stat-label">攻撃</span>
             <strong id="self-attack" class="country-stat-value country-stat-value-small">0</strong>
           </div>
-          <div class="country-stat country-stat-compact">
+          <div class="country-stat country-stat-compact country-stat-defense">
             <span class="country-stat-label">防御</span>
             <strong id="self-defense" class="country-stat-value country-stat-value-small">2</strong>
           </div>
